@@ -1,6 +1,5 @@
 const mongoose = require('mongoose');
-const { port } = require('../server/server.js');
-mongoose.connect(`mongodb://localhost:${port}/restaurantphotos`);
+mongoose.connect('mongodb://localhost/restaurantphotos');
 
 const Schema = mongoose.Schema;
 const photoSchema = new Schema({
