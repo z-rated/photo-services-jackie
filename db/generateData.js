@@ -1,4 +1,5 @@
 const { imageUrls, restaurantNames } = require('./data.js');
+const { port } = require('../server/server.js');
 const db = require('./schema.js');
 
 const generateRandomNumBtwRange = (a, b) => {
