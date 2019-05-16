@@ -2,7 +2,7 @@ const path = require('path');
 
 module.exports = {
   mode: 'production',
-  entry: './client/photos.jsx',
+  entry: './client/components/Gallery.jsx',
   output: {
     path: path.resolve(__dirname, './public'),
     filename: 'bundle.js',
@@ -15,10 +15,10 @@ module.exports = {
           loader: 'babel-loader',
           options: {
             presets: ['@babel/preset-react', '@babel/preset-env'],
-          }
-        }
+          },
+        },
       },
 
-    ]
-  }
+    ],
+  },
 };
