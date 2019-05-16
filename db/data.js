@@ -64,5 +64,5 @@ const restaurantNames = ['Gaggan',
 
 module.exports = {
   imageUrls,
-  restaurantNames
+  restaurantNames,
 };

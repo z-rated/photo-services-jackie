@@ -1,7 +1,8 @@
 const mongoose = require('mongoose');
+
 mongoose.connect('mongodb://localhost/restaurantphotos');
 
-const Schema = mongoose.Schema;
+const { Schema } = mongoose.Schema;
 const photoSchema = new Schema({
   restaurantId: Number,
   name: String,
