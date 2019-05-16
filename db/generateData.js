@@ -46,11 +46,6 @@ const generateNRecords = (n) => {
 
 let records = generateNRecords(100);
 
-mongoose.connection.collections['photos'].drop(function (err) {
-  if (err) { console.log(err); }
-  console.log('\nRESTAURANTS COLLECTION DROPPED.');
-});
-
 db.Photo.insertMany(records, (err, result) => {
   if (err) {
     console.log('Error inserting 100 records to database');
@@ -59,4 +54,4 @@ db.Photo.insertMany(records, (err, result) => {
   }
 });
 
-// run node generateData.js
+// run node db/generateData.js
