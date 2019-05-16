@@ -1,5 +1,4 @@
 const { imageUrls, restaurantNames } = require('./data.js');
-const { port } = require('../server/server.js');
 const db = require('./schema.js');
 
 const generateRandomNumBtwRange = (a, b) => {
@@ -46,6 +45,11 @@ const generateNRecords = (n) => {
 };
 
 let records = generateNRecords(100);
+
+mongoose.connection.collections['photos'].drop(function (err) {
+  if (err) { console.log(err); }
+  console.log('\nRESTAURANTS COLLECTION DROPPED.');
+});
 
 db.Photo.insertMany(records, (err, result) => {
   if (err) {
