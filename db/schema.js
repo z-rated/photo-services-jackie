@@ -31,7 +31,7 @@ for (let i = 0; i < 100; i += 1) {
   arr = arr.slice(0, n).map(num => imageUrls[num]);
 
   records.push({
-    restaurantId: i,
+    restaurantId: i + 1,
     name: faker.random.arrayElement(restaurantNames),
     photos: arr,
   });
