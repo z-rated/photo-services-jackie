@@ -11,8 +11,8 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, '../public')));
 
-app.get('/photos', (req, res) => {
-  db.getPhotos(req.query.id, (err, result) => {
+app.get('/api/restaurants/:id/photos', (req, res) => {
+  db.getPhotos(req.params.id, (err, result) => {
     if (err) {
       res.status(404).send();
     } else {
