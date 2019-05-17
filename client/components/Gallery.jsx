@@ -8,7 +8,7 @@ class Gallery extends React.Component {
     super(props);
 
     this.state = {
-      id: 1,
+      id: 2,
       imageUrls: [],
       showModal: false,
       modalView: 'grid',
@@ -25,7 +25,7 @@ class Gallery extends React.Component {
 
   getPhotos() {
     const { id } = this.state;
-    fetch(`/photos?id=${id}`, {
+    fetch(`/api/restaurants/${id}/photos`, {
       method: 'GET',
       mode: 'cors',
       headers: {

@@ -1,15 +1,17 @@
 import React from 'react';
 
-const Photos = ({ images }) => (
-  <div className="photos-container">
-    <div className="img-1"><img src={images[0]} alt="" /></div>
-    <div className="img-2"><img src={images[1]} alt="" /></div>
-    <div className="img-3"><img src={images[2]} alt="" /></div>
-    <div className="img-4"><img src={images[3]} alt="" /></div>
-    <div className="img-5"><img src={images[4]} alt="" /></div>
-    <div className="img-6"><img src={images[5]} alt="" /></div>
-    <div className="img-7"><img src={images[6]} alt="" /></div>
-  </div>
-);
+const Photos = ({ images }) => {
+  const firstSeven = images.slice(0, 7);
+
+  return (
+    <div className="photos-container">
+      {firstSeven.map((imageUrl, index) => (
+        <div className={`img-${index + 1}`}>
+          <img src={imageUrl} alt="" />
+        </div>
+      ))}
+    </div>
+  );
+};
 
 export default Photos;

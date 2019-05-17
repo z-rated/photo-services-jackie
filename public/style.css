@@ -19,7 +19,7 @@ SEARCH BAR
 
 
 /* ===============================
-GALLERY BAR
+GALLERY AREA
 ==================================*/
 
 #gallery {
@@ -40,6 +40,7 @@ GALLERY BAR
 .photos-container div {
     justify-items: center;
     overflow: hidden;
+    position: relative;
 }
 
 .photos-container img {
@@ -47,6 +48,32 @@ GALLERY BAR
     height: 100%;
     object-fit: cover;
 }
+
+.photos-container div:hover img {
+    transform: scale(1.015);
+    transition: all 0.4s;
+}
+
+/* OVERLAY */
+
+.photos-container div::before {
+  content: '';
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  background-color: rgba(0, 0, 0, 0.15);
+  transition: all 0.4s;
+}
+
+.photos-container div:hover::before {
+  opacity: 1;
+  z-index: 1;
+}
+
+/* ===============================
+INDIVIDUAL PHOTOS
+==================================*/
 
 .img-1 {
     grid-row: 1 / 3;
