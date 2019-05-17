@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 
 mongoose.connect('mongodb://localhost/restaurantphotos', { useNewUrlParser: true });
+mongoose.set('useCreateIndex', true);
 
 const { Schema } = mongoose;
 const photoSchema = new Schema({

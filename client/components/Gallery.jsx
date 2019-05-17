@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Modal from './Modal.jsx';
+import Photos from './Photos.jsx';
 
 class Gallery extends React.Component {
   constructor(props) {
@@ -54,10 +55,8 @@ class Gallery extends React.Component {
 
   render() {
     return (
-      <div className="gallery-container">
-        {/* {this.state.imageUrls.map((url, index) => (
-          <div className="gal-img" id={`img-${index + 1}`}><img src={url} alt="" /></div>
-        ))} */}
+      <div>
+        <Photos images={this.state.imageUrls} />
         {/* {this.state.showModal && (
           <Modal
             view={this.state.modalView}
