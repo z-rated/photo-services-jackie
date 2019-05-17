@@ -24,18 +24,17 @@ class Gallery extends React.Component {
 
   getPhotos() {
     const { id } = this.state;
-    fetch('/photos', {
+    fetch(`/photos?id=${id}`, {
       method: 'GET',
       mode: 'cors',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify(id),
     })
-      .then((response) => {
-        console.log(response.json());
+      .then(data => (data.json()))
+      .then((data) => {
         this.setState({
-          imageUrls: response.json(),
+          imageUrls: data,
         });
       });
   }
@@ -56,10 +55,9 @@ class Gallery extends React.Component {
   render() {
     return (
       <div className="gallery-container">
-        Photos component
-        {this.state.imageUrls.map((url, index) => (
-          <div className="gal-img" id={`img-${index}`}><img src={url} alt="" /></div>
-        ))}
+        {/* {this.state.imageUrls.map((url, index) => (
+          <div className="gal-img" id={`img-${index + 1}`}><img src={url} alt="" /></div>
+        ))} */}
         {/* {this.state.showModal && (
           <Modal
             view={this.state.modalView}

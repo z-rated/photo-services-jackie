@@ -31,7 +31,8 @@ const imageUrls = [
   'https://s3.amazonaws.com/eugeniazagatphotos/4kmax4ji3a.jpg',
 ];
 
-const restaurantNames = ['Gaggan',
+const restaurantNames = [
+  'Gaggan',
   'Mejekawi',
   'Odette',
   'Jaan',
