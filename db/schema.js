@@ -18,7 +18,6 @@ const getPhotos = (id, callback) => {
   Photo.findOne({ restaurantId: id }).exec(callback);
 };
 
-
 const seedDatabase = (records) => {
   Photo.insertMany(records, (err) => {
     if (err) {
