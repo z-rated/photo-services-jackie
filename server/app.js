@@ -15,8 +15,7 @@ app.get('/api/restaurants/:id/photos', (req, res) => {
     if (err) {
       res.status(404).send();
     } else {
-      const urls = result.photos;
-      res.status(200).send(urls);
+      res.status(200).send(result);
     }
   });
 });

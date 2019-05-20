@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import PropTypes from 'prop-types';
 import Modal from './Modal.jsx';
 import Photos from './Photos.jsx';
 
@@ -9,9 +10,11 @@ class Gallery extends React.Component {
 
     this.state = {
       id: 2,
+      name: '',
       imageUrls: [],
       showModal: false,
-      modalView: 'grid',
+      modalView: 'slideshow',
+      currSlide: 0,
     };
 
     this.getPhotos = this.getPhotos.bind(this);
@@ -35,16 +38,25 @@ class Gallery extends React.Component {
       .then(data => (data.json()))
       .then((data) => {
         this.setState({
-          imageUrls: data,
+          name: data.name,
+          imageUrls: data.photos,
         });
       });
   }
 
-  openModal(style) {
-    this.setState({
-      showModal: true,
-      modalView: style,
-    });
+  openModal(style, index) {
+    if (index) {
+      this.setState({
+        showModal: true,
+        modalView: style,
+        currSlide: index,
+      });
+    } else {
+      this.setState({
+        showModal: true,
+        modalView: style,
+      });
+    }
   }
 
   closeModal() {
@@ -54,16 +66,22 @@ class Gallery extends React.Component {
   }
 
   render() {
+    const {
+      name, modalView, imageUrls, showModal, currSlide,
+    } = this.state;
     return (
       <div>
-        <Photos images={this.state.imageUrls} />
-        {/* {this.state.showModal && (
+        <Photos images={imageUrls} openModal={this.openModal} />
+        {showModal && (
           <Modal
-            view={this.state.modalView}
-            images={this.state.imageUrls}
+            name={name}
+            view={modalView}
+            images={imageUrls}
+            currSlide={currSlide}
             openModal={this.openModal}
             closeModal={this.closeModal}
-          /> */}
+          />
+        )}
       </div>
     );
   }
