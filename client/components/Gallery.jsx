@@ -45,7 +45,7 @@ class Gallery extends React.Component {
   }
 
   openModal(style, index) {
-    if (index) {
+    if (index >= 0) {
       this.setState({
         showModal: true,
         modalView: style,

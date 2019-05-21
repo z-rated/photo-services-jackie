@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 
 const SlideshowModal = (props) => {
   const {
-    name, images, closeModal, currSlide, changeView, nextSlide, prevSlide
+    name, images, closeModal, currSlide, changeView, nextSlide, prevSlide,
   } = props;
 
   return (
@@ -28,9 +28,12 @@ const SlideshowModal = (props) => {
         <div className="slideshow-img">
           <img src={images[currSlide]} alt="" />
         </div>
-        {/* <div className="btn-prev-slide">&#60;</div>
-        <div className="btn-next-slide">&#62;</div> */}
-
+      </div>
+      <div className="container-prev-slide">
+        <span className="btn-prev-slide" onClick={prevSlide} role="button" tabIndex="-2">&#60;</span>
+      </div>
+      <div className="container-next-slide">
+        <span className="btn-next-slide" onClick={nextSlide} role="button" tabIndex="-1">&#62;</span>
       </div>
       <div className="slideshow-footer">
         <div className="slideshow-separator" />
