@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 const SlideshowModal = (props) => {
   const {
-    name, images, closeModal, currSlide, changeView, nextSlide, prevSlide,
+    name, images, transitionExit, closeModal, currSlide, changeView, nextSlide, prevSlide,
   } = props;
 
   return (
@@ -28,7 +28,7 @@ const SlideshowModal = (props) => {
           </svg>
         </span>
       </div>
-      <div className="slideshow-photo-view">
+      <div className={`slideshow-photo-view ${transitionExit}`}>
         <div className="slideshow-img">
           <img src={images[currSlide]} alt="" />
         </div>
@@ -62,6 +62,7 @@ const SlideshowModal = (props) => {
 SlideshowModal.propTypes = {
   name: PropTypes.string,
   images: PropTypes.arrayOf(PropTypes.string),
+  transitionExit: PropTypes.func,
   closeModal: PropTypes.func,
   currSlide: PropTypes.number,
   changeView: PropTypes.func,
@@ -72,6 +73,7 @@ SlideshowModal.propTypes = {
 SlideshowModal.defaultProps = {
   name: 'restaurant name',
   images: [''],
+  transitionExit: () => { },
   closeModal: () => { },
   currSlide: 0,
   changeView: () => { },

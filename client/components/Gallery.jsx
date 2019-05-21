@@ -14,6 +14,8 @@ class Gallery extends React.Component {
       imageUrls: [],
       showModal: false,
       modalView: 'slideshow',
+      transitionEnter: '',
+      transitionExit: '',
       currSlide: 0,
     };
 
@@ -49,25 +51,33 @@ class Gallery extends React.Component {
       this.setState({
         showModal: true,
         modalView: style,
+        transitionEnter: 'zoomIn',
+        transitionExit: '',
         currSlide: index,
       });
     } else {
       this.setState({
         showModal: true,
         modalView: style,
+        transitionEnter: 'zoomIn',
+        transitionExit: '',
       });
     }
   }
 
   closeModal() {
     this.setState({
-      showModal: false,
-    });
+      transitionExit: 'zoomOut',
+    }, () => setTimeout(() => {
+      this.setState({
+        showModal: false,
+      });
+    }, 300));
   }
 
   render() {
     const {
-      restaurantName, modalView, imageUrls, showModal, currSlide,
+      restaurantName, modalView, transitionEnter, transitionExit, imageUrls, showModal, currSlide,
     } = this.state;
     return (
       <div className="gallery-container">
@@ -76,9 +86,10 @@ class Gallery extends React.Component {
           <Modal
             name={restaurantName}
             view={modalView}
+            transitionEnter={transitionEnter}
+            transitionExit={transitionExit}
             images={imageUrls}
             currSlide={currSlide}
-            openModal={this.openModal}
             closeModal={this.closeModal}
           />
         )}

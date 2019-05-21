@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 const GridModal = (props) => {
   const {
-    name, images, closeModal, changeView,
+    name, images, transitionExit, closeModal, changeView,
   } = props;
 
   return (
@@ -19,7 +19,7 @@ const GridModal = (props) => {
           </svg>
         </span>
       </div>
-      <div className="grid-photo-view">
+      <div className={`grid-photo-view ${transitionExit}`}>
         <div className="grid-container">
           {images.map((image, index) => (
             <div className="modal-img" onClick={() => changeView('slideshow', index)} role="presentation">
@@ -35,6 +35,7 @@ const GridModal = (props) => {
 GridModal.propTypes = {
   name: PropTypes.string,
   images: PropTypes.arrayOf(PropTypes.string),
+  transitionExit: PropTypes.func,
   closeModal: PropTypes.func,
   changeView: PropTypes.func,
 };
@@ -42,6 +43,7 @@ GridModal.propTypes = {
 GridModal.defaultProps = {
   name: 'restuarant name',
   images: [''],
+  transitionExit: () => { },
   closeModal: () => { },
   changeView: () => { },
 };

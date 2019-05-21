@@ -64,15 +64,18 @@ class Modal extends React.Component {
   }
 
   render() {
-    const { name, images, closeModal } = this.props;
+    const {
+      name, images, transitionEnter, transitionExit, closeModal,
+    } = this.props;
     const { view, currSlide } = this.state;
     return (
-      <div className="modal" id="gallery-modal">
+      <div className={`modal ${transitionEnter}`} id="gallery-modal">
         {view === 'slideshow' && (
           <SlideshowModal
             name={name}
             images={images}
             currSlide={currSlide}
+            transitionExit={transitionExit}
             closeModal={closeModal}
             changeView={this.changeView}
             prevSlide={this.prevSlide}
@@ -83,6 +86,7 @@ class Modal extends React.Component {
           <GridModal
             name={name}
             images={images}
+            transitionExit={transitionExit}
             closeModal={closeModal}
             changeView={this.changeView}
           />
@@ -93,18 +97,22 @@ class Modal extends React.Component {
 }
 
 Modal.propTypes = {
-  view: PropTypes.string,
-  currSlide: PropTypes.number,
   name: PropTypes.string,
+  view: PropTypes.string,
   images: PropTypes.arrayOf(PropTypes.string),
+  transitionEnter: PropTypes.func,
+  transitionExit: PropTypes.func,
+  currSlide: PropTypes.number,
   closeModal: PropTypes.func,
 };
 
 Modal.defaultProps = {
-  view: 'slideshow',
-  currSlide: 0,
   name: 'restaurant name',
+  view: 'slideshow',
   images: [''],
+  transitionEnter: () => { },
+  transitionExit: () => { },
+  currSlide: 0,
   closeModal: () => { },
 };
 
