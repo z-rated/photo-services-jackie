@@ -301,13 +301,15 @@ GRID MODAL
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    padding: 2px;
 }
 
 .grid-container .modal-img {
     height: 31vw;
     width: 31vw;
+    position: relative;
     overflow: hidden;
-    padding: 2px;
+    margin: 2px;
 }
 
 .modal-img img {
@@ -315,6 +317,30 @@ GRID MODAL
     height: 100%;
     object-fit: cover;
 }
+
+/* HOVER AND OVERLAY */
+
+.modal-img:hover img{
+    transform: scale(1.015);
+    transition: all 0.4s;
+}
+.grid-container .modal-img::before {
+  content: '';
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  background-color: rgba(0, 0, 0, 0.15);
+  transition: all 0.4s;
+}
+
+.grid-container .modal-img:hover::before {
+  opacity: 1;
+  z-index: 1;
+  cursor: pointer;
+}
+
+/* SCROLLBAR */
 
 .grid-photo-view::-webkit-scrollbar {
     width: 10px;
