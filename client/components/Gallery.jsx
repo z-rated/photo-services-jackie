@@ -9,7 +9,7 @@ class Gallery extends React.Component {
     super(props);
 
     this.state = {
-      id: 2,
+      id: 1,
       name: '',
       imageUrls: [],
       showModal: false,

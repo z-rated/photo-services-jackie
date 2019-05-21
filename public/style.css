@@ -194,32 +194,37 @@ SLIDESHOW
 }
 
 /*slideshow buttons*/
-.container-prev-slide {
+.container-prev-slide,
+.container-next-slide {
     position: absolute;
+    height: 40px;
+    width: 40px;
     top: 45%;
+    text-align: center;
+    border-radius: 50%;
+}
+
+.container-prev-slide {
     left: 40px;
 }
 
 .container-next-slide {
-    position: absolute;
-    top: 45%;
     right: 40px;
 }
+
 
 .btn-prev-slide,
 .btn-next-slide {
     height: 100%;
     width: 100%;
-    text-align: center;
     line-height: 40px;
     color: white;
-    border-radius: 50%;
     font-size: 35px;
     font-family: 'Karla', 'Roboto', sans-serif;
 }
 
-.btn-prev-slide:hover,
-.btn-next-slide:hover {
+.container-prev-slide:hover,
+.container-next-slide:hover {
     background:rgba(16, 24, 32, 0.99);
     cursor: pointer;
 }
