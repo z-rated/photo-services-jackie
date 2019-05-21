@@ -6,6 +6,7 @@ const GridModal = (props) => {
   const {
     name, images, closeModal, changeView,
   } = props;
+
   return (
     <div className="modal-dialog">
       <div className="modal-header">
