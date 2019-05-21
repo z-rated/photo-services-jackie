@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Modal from './Modal';
 import Photos from './Photos';
-import ShowGalleryBox from './ShowGalleryBox';
+import ShowGridModalBox from './ShowGridModalBox';
 
 class Gallery extends React.Component {
   constructor(props) {
@@ -82,7 +82,7 @@ class Gallery extends React.Component {
             closeModal={this.closeModal}
           />
         )}
-        <ShowGalleryBox images={imageUrls} openModal={this.openModal} />
+        <ShowGridModalBox images={imageUrls} openModal={this.openModal} />
       </div>
     );
   }

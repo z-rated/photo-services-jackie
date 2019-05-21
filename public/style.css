@@ -14,8 +14,39 @@ SEARCH BAR
     width: 100%;
     top: 0px;
     left: 0px;
-    height: 70px;
+    height: 80px;
     z-index: 1;
+}
+
+/* ===============================
+SHOW GRID MODAL BOX
+==================================*/
+
+.show-grid-modal-box{
+    position: absolute;
+    background-color: rgba(16,24,32,0.75);
+    height: 40px;
+    padding-right: 10px;
+    padding-left: 16px;
+    right: 40px;
+    top: calc(50% - 15px);
+    color: white;
+    font: 12px/40px 'Roboto', sans-serif;
+    letter-spacing: 0.125em;
+    text-transform: uppercase;
+    z-index: 1;
+}
+
+.btn-show-grid {
+    fill:white;
+    vertical-align: middle;
+    margin-left: 3px;
+    margin-bottom: 3px;
+}
+
+.show-gallery-box:hover {
+    background-color: #101820;
+    cursor: pointer;
 }
 
 
@@ -23,8 +54,9 @@ SEARCH BAR
 GALLERY AREA
 ==================================*/
 
-#gallery {
-    margin-top: 70px;
+.gallery-container {
+    position: relative;
+    margin-top: 80px;
     height: 400px;
     width: 100%;
     overflow: hidden;
@@ -50,12 +82,11 @@ GALLERY AREA
     object-fit: cover;
 }
 
+/* HOVER AND OVERLAY */
 .photos-container div:hover img {
     transform: scale(1.015);
     transition: all 0.4s;
 }
-
-/* OVERLAY */
 
 .photos-container div::before {
   content: '';
@@ -378,3 +409,9 @@ FONTS
     src: local('Roboto Light'), local('Roboto-Light'), url(https://fonts.gstatic.com/s/roboto/v19/KFOlCnqEu92Fr1MmSU5fBBc4AMP6lQ.woff2) format('woff2');
     unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
   }
+
+  @font-face {
+    font-family: 'Calibre-Medium';
+    src: url('./media/fonts/CalibreWeb-Medium.woff2') format('woff2');
+  }
+  
