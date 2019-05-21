@@ -1,6 +1,6 @@
 # Project Name
 
-> Project description
+> Photos module for Zagat.com
 
 ## Related Projects
 
@@ -16,7 +16,9 @@
 
 ## Usage
 
-> Some usage instructions
+> npm run seed to seed database (initial)
+> npm run build to compile jsx files to one bundle
+> npm run server 
 
 ## Requirements
 

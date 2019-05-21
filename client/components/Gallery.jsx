@@ -1,8 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import PropTypes from 'prop-types';
-import Modal from './Modal.jsx';
-import Photos from './Photos.jsx';
+import Modal from './Modal';
+import Photos from './Photos';
 
 class Gallery extends React.Component {
   constructor(props) {
@@ -10,7 +9,7 @@ class Gallery extends React.Component {
 
     this.state = {
       id: 1,
-      name: '',
+      restaurantName: '',
       imageUrls: [],
       showModal: false,
       modalView: 'slideshow',
@@ -38,14 +37,14 @@ class Gallery extends React.Component {
       .then(data => (data.json()))
       .then((data) => {
         this.setState({
-          name: data.name,
+          restaurantName: data.name,
           imageUrls: data.photos,
         });
       });
   }
 
   openModal(style, index) {
-    if (index >= 0) {
+    if (style === 'slideshow') {
       this.setState({
         showModal: true,
         modalView: style,
@@ -67,14 +66,14 @@ class Gallery extends React.Component {
 
   render() {
     const {
-      name, modalView, imageUrls, showModal, currSlide,
+      restaurantName, modalView, imageUrls, showModal, currSlide,
     } = this.state;
     return (
       <div>
         <Photos images={imageUrls} openModal={this.openModal} />
         {showModal && (
           <Modal
-            name={name}
+            name={restaurantName}
             view={modalView}
             images={imageUrls}
             currSlide={currSlide}

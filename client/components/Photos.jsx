@@ -1,4 +1,3 @@
-/* eslint-disable react/require-default-props */
 import React from 'react';
 import PropTypes from 'prop-types';
 
@@ -19,6 +18,11 @@ const Photos = ({ images, openModal }) => {
 Photos.propTypes = {
   images: PropTypes.arrayOf(PropTypes.string),
   openModal: PropTypes.func,
+};
+
+Photos.defaultProps = {
+  images: [''],
+  openModal: () => { },
 };
 
 export default Photos;

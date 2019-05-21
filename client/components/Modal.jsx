@@ -1,8 +1,7 @@
-/* eslint-disable react/require-default-props */
 import React from 'react';
 import PropTypes from 'prop-types';
-import GridModal from './GridModal.jsx';
-import SlideshowModal from './SlideshowModal.jsx';
+import GridModal from './GridModal';
+import SlideshowModal from './SlideshowModal';
 
 class Modal extends React.Component {
   constructor(props) {
@@ -30,7 +29,7 @@ class Modal extends React.Component {
   }
 
   changeView(style, index) {
-    if (index >= 0) {
+    if (style === 'slideshow') {
       this.setState({
         view: 'slideshow',
         currSlide: index,
@@ -99,6 +98,14 @@ Modal.propTypes = {
   name: PropTypes.string,
   images: PropTypes.arrayOf(PropTypes.string),
   closeModal: PropTypes.func,
+};
+
+Modal.defaultProps = {
+  view: 'slideshow',
+  currSlide: 0,
+  name: 'restaurant name',
+  images: [''],
+  closeModal: () => { },
 };
 
 export default Modal;

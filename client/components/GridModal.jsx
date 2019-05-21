@@ -1,4 +1,3 @@
-/* eslint-disable react/require-default-props */
 import React from 'react';
 import PropTypes from 'prop-types';
 
@@ -38,6 +37,13 @@ GridModal.propTypes = {
   images: PropTypes.arrayOf(PropTypes.string),
   closeModal: PropTypes.func,
   changeView: PropTypes.func,
+};
+
+GridModal.defaultProps = {
+  name: 'restuarant name',
+  images: [''],
+  closeModal: () => { },
+  changeView: () => { },
 };
 
 export default GridModal;

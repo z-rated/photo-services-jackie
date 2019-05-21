@@ -1,5 +1,3 @@
-/* eslint-disable jsx-a11y/click-events-have-key-events */
-/* eslint-disable react/require-default-props */
 import React from 'react';
 import PropTypes from 'prop-types';
 
@@ -69,6 +67,16 @@ SlideshowModal.propTypes = {
   changeView: PropTypes.func,
   nextSlide: PropTypes.func,
   prevSlide: PropTypes.func,
+};
+
+SlideshowModal.defaultProps = {
+  name: 'restaurant name',
+  images: [''],
+  closeModal: () => { },
+  currSlide: 0,
+  changeView: () => { },
+  nextSlide: () => { },
+  prevSlide: () => { },
 };
 
 export default SlideshowModal;
