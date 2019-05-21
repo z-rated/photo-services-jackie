@@ -126,7 +126,7 @@ MODAL
     overflow: auto;
     background-color: rgba(16,24,32,.95);   
 }
-
+/* use header for both slideshow and grid */
 .modal-title {
     margin: 28px 0;
     text-align: center;
@@ -143,6 +143,10 @@ MODAL
     z-index: 10;
 
 }
+
+/* ===============================
+SLIDESHOW
+==================================*/
 
 .slideshow-view-index {
     font-size: 14px;
@@ -186,6 +190,40 @@ MODAL
     background: white;
     color: rgba(16, 24, 32, 1);
     cursor: pointer;
+}
+
+.slideshow-photo-view {
+    height: calc(100vh - 76px - 92px);
+    padding: 10px 4%;
+}
+
+.slideshow-img {
+    display: flex;
+    flex-wrap: wrap;
+    height: 100%;
+    width: 100%;
+    justify-content: center;
+    align-content: center;
+}
+
+.slideshow-img > img {
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+}
+
+.slideshow-footer {
+    width: 100%;
+    height: 52px;
+}
+
+.slideshow-separator {
+    border-bottom: 1px white solid;
+    border-top: 1px white solid;
+    height: 2px;
+    margin-bottom: 8px;
+    margin-top: 16px;
+    width: 32px;
 }
 
 /* ===============================
