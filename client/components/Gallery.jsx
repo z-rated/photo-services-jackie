@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Modal from './Modal';
 import Photos from './Photos';
+import ShowGalleryBox from './ShowGalleryBox';
 
 class Gallery extends React.Component {
   constructor(props) {
@@ -69,7 +70,7 @@ class Gallery extends React.Component {
       restaurantName, modalView, imageUrls, showModal, currSlide,
     } = this.state;
     return (
-      <div>
+      <div className="gallery-container">
         <Photos images={imageUrls} openModal={this.openModal} />
         {showModal && (
           <Modal
@@ -81,6 +82,7 @@ class Gallery extends React.Component {
             closeModal={this.closeModal}
           />
         )}
+        <ShowGalleryBox images={imageUrls} openModal={this.openModal} />
       </div>
     );
   }
