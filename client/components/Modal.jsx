@@ -29,12 +29,17 @@ class Modal extends React.Component {
     });
   }
 
-  changeView() {
-    let { view } = this.state;
-    view = view === 'grid' ? 'slideshow' : 'grid';
-    this.setState({
-      view,
-    });
+  changeView(style, index) {
+    if (index >= 0) {
+      this.setState({
+        view: 'slideshow',
+        currSlide: index,
+      });
+    } else {
+      this.setState({
+        view: 'grid',
+      });
+    }
   }
 
   prevSlide() {
@@ -75,7 +80,14 @@ class Modal extends React.Component {
             nextSlide={this.nextSlide}
           />
         )}
-        {view === 'grid' && <GridModal name={name} changeView={this.changeView} />}
+        {view === 'grid' && (
+          <GridModal
+            name={name}
+            images={images}
+            closeModal={closeModal}
+            changeView={this.changeView}
+          />
+        )}
       </div>
     );
   }
