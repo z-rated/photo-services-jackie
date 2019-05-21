@@ -37,6 +37,12 @@ const SlideshowModal = (props) => {
       </div>
       <div className="slideshow-footer">
         <div className="slideshow-separator" />
+        <div className="slideshow-user-avatar">
+          <img src="http://s3.amazonaws.com/eugeniazagatphotos/user-avatar.png" alt="" />
+        </div>
+        <div className="slideshow-user-name">
+          a google user
+        </div>
       </div>
 
     </div>
