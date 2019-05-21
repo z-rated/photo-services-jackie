@@ -38,7 +38,7 @@ GALLERY AREA
     grid-gap: 4px;
 }
 
-.photos-container div {
+.photos-container > div {
     justify-items: center;
     overflow: hidden;
     position: relative;
@@ -166,31 +166,34 @@ SLIDESHOW
     padding-right: 16px;
 }
 
+.open-grid-svg {
+    fill: white;
+    margin: 12% 12%;
+}
+
 .close-modal {
     display: inline-block;
     vertical-align: middle;
     margin-right: 30px;
     height: 40px;
     width: 40px;
+    border-radius: 50%;
 }
 
 .x-btn-close-modal {
-    height: 100%;
-    width: 100%;
-    text-align: center;
-    line-height: 40px;
-    color: white;
-    background:rgba(16, 24, 32, 0.99);
-    border-radius: 50%;
-    border: none;
-    font-size: 25px;
-    font-family: 'Nunito', 'Roboto', sans-serif;
+    fill:white;
+    height: 36px;
+    width: 36px;
+    margin: 6% 6%;
 }
 
-.x-btn-close-modal:hover {
+.close-modal:hover {
     background: white;
-    color: rgba(16, 24, 32, 1);
     cursor: pointer;
+}
+
+.close-modal:hover .x-btn-close-modal {
+    fill: rgba(16, 24, 32, 1);
 }
 
 /*slideshow buttons*/
@@ -199,7 +202,7 @@ SLIDESHOW
     position: absolute;
     height: 40px;
     width: 40px;
-    top: 45%;
+    top: 46%;
     text-align: center;
     border-radius: 50%;
 }
@@ -214,17 +217,14 @@ SLIDESHOW
 
 .btn-prev-slide,
 .btn-next-slide {
+    fill: white;
     height: 100%;
     width: 100%;
-    line-height: 40px;
-    color: white;
-    font-size: 35px;
-    font-family: 'Karla', 'Roboto', sans-serif;
 }
 
 .container-prev-slide:hover,
 .container-next-slide:hover {
-    background:rgba(16, 24, 32, 0.99);
+    background:rgba(16,24,32,0.95); 
     cursor: pointer;
 }
 
@@ -279,7 +279,7 @@ SLIDESHOW
     color: white;
     font-size: 13px;
     font-weight: 300;
-    letter-spacing: 0.013em;
+    letter-spacing: 0.013em ;
     line-height: 24px;
     text-transform: uppercase;
     vertical-align: middle;
@@ -301,23 +301,5 @@ FONTS
     font-style: normal;
     font-weight: 300;
     src: local('Roboto Light'), local('Roboto-Light'), url(https://fonts.gstatic.com/s/roboto/v19/KFOlCnqEu92Fr1MmSU5fBBc4AMP6lQ.woff2) format('woff2');
-    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-  }
-
-  @font-face {
-    font-family: 'Nunito';
-    font-style: normal;
-    font-weight: 400;
-    font-display: swap;
-    src: local('Nunito Regular'), local('Nunito-Regular'), url(https://fonts.gstatic.com/s/nunito/v10/XRXV3I6Li01BKofINeaBTMnFcQ.woff2) format('woff2');
-    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-  }
-
-  @font-face {
-    font-family: 'Karla';
-    font-style: normal;
-    font-weight: 400;
-    font-display: swap;
-    src: local('Karla'), local('Karla-Regular'), url(https://fonts.gstatic.com/s/karla/v7/qkBbXvYC6trAT7RVLtyU5rZP.woff2) format('woff2');
     unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
   }
