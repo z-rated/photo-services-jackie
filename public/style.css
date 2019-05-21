@@ -44,7 +44,7 @@ SHOW GRID MODAL BOX
     margin-bottom: 3px;
 }
 
-.show-gallery-box:hover {
+.show-grid-modal-box:hover {
     background-color: #101820;
     cursor: pointer;
 }
@@ -83,6 +83,7 @@ GALLERY AREA
 }
 
 /* HOVER AND OVERLAY */
+
 .photos-container div:hover img {
     transform: scale(1.015);
     transition: all 0.4s;
