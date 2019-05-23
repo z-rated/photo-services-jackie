@@ -13,8 +13,8 @@ class Gallery extends React.Component {
       imageUrls: [],
       showModal: false,
       modalView: 'slideshow',
-      transitionEnter: '',
-      transitionExit: '',
+      onEnter: '',
+      onExit: '',
       currSlide: 0,
     };
 
@@ -53,23 +53,23 @@ class Gallery extends React.Component {
       this.setState({
         showModal: true,
         modalView: style,
-        transitionEnter: 'zoomIn',
-        transitionExit: '',
+        onEnter: 'zoomIn',
+        onExit: '',
         currSlide: index,
       });
     } else {
       this.setState({
         showModal: true,
         modalView: style,
-        transitionEnter: 'zoomIn',
-        transitionExit: '',
+        onEnter: 'zoomIn',
+        onExit: '',
       });
     }
   }
 
   closeModal() {
     this.setState({
-      transitionExit: 'zoomOut',
+      onExit: 'zoomOut',
     }, () => setTimeout(() => {
       this.setState({
         showModal: false,
@@ -116,7 +116,7 @@ class Gallery extends React.Component {
 
   render() {
     const {
-      restaurantName, modalView, transitionEnter, transitionExit, imageUrls, showModal, currSlide,
+      restaurantName, modalView, onEnter, onExit, imageUrls, showModal, currSlide,
     } = this.state;
     return (
       <div className="gallery-container">
@@ -125,8 +125,8 @@ class Gallery extends React.Component {
           <Modal
             name={restaurantName}
             view={modalView}
-            transitionEnter={transitionEnter}
-            transitionExit={transitionExit}
+            onEnter={onEnter}
+            onExit={onExit}
             images={imageUrls}
             currSlide={currSlide}
             closeModal={this.closeModal}

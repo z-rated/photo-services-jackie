@@ -5,18 +5,18 @@ import SlideshowModal from './SlideshowModal';
 
 const Modal = (props) => {
   const {
-    name, view, images, transitionEnter, transitionExit, currSlide, closeModal,
+    name, view, images, onEnter, onExit, currSlide, closeModal,
     changeView, prevSlide, nextSlide,
   } = props;
 
   return (
-    <div className={`modal ${transitionEnter}`} id="gallery-modal">
+    <div className={`modal ${onEnter}`} id="gallery-modal">
       {view === 'slideshow' && (
         <SlideshowModal
           name={name}
           images={images}
           currSlide={currSlide}
-          transitionExit={transitionExit}
+          onExit={onExit}
           closeModal={closeModal}
           changeView={changeView}
           prevSlide={prevSlide}
@@ -27,7 +27,7 @@ const Modal = (props) => {
         <GridModal
           name={name}
           images={images}
-          transitionExit={transitionExit}
+          onExit={onExit}
           closeModal={closeModal}
           changeView={changeView}
         />
@@ -41,8 +41,8 @@ Modal.propTypes = {
   name: PropTypes.string,
   view: PropTypes.string,
   images: PropTypes.arrayOf(PropTypes.string),
-  transitionEnter: PropTypes.string,
-  transitionExit: PropTypes.string,
+  onEnter: PropTypes.string,
+  onExit: PropTypes.string,
   currSlide: PropTypes.number,
   closeModal: PropTypes.func,
   changeView: PropTypes.func,
@@ -54,8 +54,8 @@ Modal.defaultProps = {
   name: 'restaurant name',
   view: 'slideshow',
   images: [],
-  transitionEnter: '',
-  transitionExit: '',
+  onEnter: '',
+  onExit: '',
   currSlide: 0,
   closeModal: () => { },
   changeView: () => { },
