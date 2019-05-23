@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import Modal from './Modal';
 import Photos from './Photos';
 import ShowGridModalBox from './ShowGridModalBox';
@@ -99,4 +98,4 @@ class Gallery extends React.Component {
   }
 }
 
-ReactDOM.render(<Gallery />, document.getElementById('gallery'));
+export default Gallery;

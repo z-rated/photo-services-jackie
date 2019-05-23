@@ -15,7 +15,12 @@ describe('GET /api/restaurants/:id/photos', () => {
     done();
   });
 
-  test('It should respond with status code 200', async () => {
+  test('It should respond with status code 404 for a bad request', async () => {
+    const response = await request(server).get('/api/restaurants/101/photos');
+    expect(response.statusCode).toBe(404);
+  });
+
+  test('It should respond with status code 200 for a valid request', async () => {
     const response = await request(server).get('/api/restaurants/1/photos');
     expect(response.statusCode).toBe(200);
   });
