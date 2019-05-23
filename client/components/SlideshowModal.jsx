@@ -62,7 +62,7 @@ const SlideshowModal = (props) => {
 SlideshowModal.propTypes = {
   name: PropTypes.string,
   images: PropTypes.arrayOf(PropTypes.string),
-  transitionExit: PropTypes.func,
+  transitionExit: PropTypes.string,
   closeModal: PropTypes.func,
   currSlide: PropTypes.number,
   changeView: PropTypes.func,
@@ -72,8 +72,8 @@ SlideshowModal.propTypes = {
 
 SlideshowModal.defaultProps = {
   name: 'restaurant name',
-  images: [''],
-  transitionExit: () => { },
+  images: [],
+  transitionExit: '',
   closeModal: () => { },
   currSlide: 0,
   changeView: () => { },

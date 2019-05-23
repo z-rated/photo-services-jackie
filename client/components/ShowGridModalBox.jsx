@@ -17,7 +17,7 @@ ShowGridModalBox.propTypes = {
 };
 
 ShowGridModalBox.defaultProps = {
-  images: [''],
+  images: [],
   openModal: () => { },
 };
 

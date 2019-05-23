@@ -100,8 +100,8 @@ Modal.propTypes = {
   name: PropTypes.string,
   view: PropTypes.string,
   images: PropTypes.arrayOf(PropTypes.string),
-  transitionEnter: PropTypes.func,
-  transitionExit: PropTypes.func,
+  transitionEnter: PropTypes.string,
+  transitionExit: PropTypes.string,
   currSlide: PropTypes.number,
   closeModal: PropTypes.func,
 };
@@ -109,9 +109,9 @@ Modal.propTypes = {
 Modal.defaultProps = {
   name: 'restaurant name',
   view: 'slideshow',
-  images: [''],
-  transitionEnter: () => { },
-  transitionExit: () => { },
+  images: [],
+  transitionEnter: '',
+  transitionExit: '',
   currSlide: 0,
   closeModal: () => { },
 };

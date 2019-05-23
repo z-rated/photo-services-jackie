@@ -15,13 +15,7 @@ photoSchema.index({ restaurantId: 1 });
 const Photo = mongoose.model('Photo', photoSchema);
 
 const getPhotos = (id, callback) => {
-  Photo.findOne({ restaurantId: id }).exec((err, result) => {
-    if (err) {
-      callback(err);
-    } else {
-      callback(null, result);
-    }
-  });
+  Photo.findOne({ restaurantId: id }).exec(callback);
 };
 
 const seedDatabase = (records) => {

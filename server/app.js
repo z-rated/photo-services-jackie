@@ -12,7 +12,7 @@ app.use(express.static(path.join(__dirname, '../public')));
 
 app.get('/api/restaurants/:id/photos', (req, res) => {
   db.getPhotos(req.params.id, (err, result) => {
-    if (err) {
+    if (err || !result) {
       res.status(404).send();
     } else {
       res.status(200).send(result);

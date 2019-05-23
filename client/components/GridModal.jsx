@@ -35,14 +35,14 @@ const GridModal = (props) => {
 GridModal.propTypes = {
   name: PropTypes.string,
   images: PropTypes.arrayOf(PropTypes.string),
-  transitionExit: PropTypes.func,
+  transitionExit: PropTypes.string,
   closeModal: PropTypes.func,
   changeView: PropTypes.func,
 };
 
 GridModal.defaultProps = {
   name: 'restuarant name',
-  images: [''],
+  images: [],
   transitionExit: () => { },
   closeModal: () => { },
   changeView: () => { },

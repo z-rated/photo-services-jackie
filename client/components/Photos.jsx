@@ -1,3 +1,4 @@
+/* eslint-disable react/no-array-index-key */
 import React from 'react';
 import PropTypes from 'prop-types';
 
@@ -7,7 +8,7 @@ const Photos = ({ images, openModal }) => {
   return (
     <div className="photos-container">
       {firstSeven.map((imageUrl, index) => (
-        <div className={`img-${index + 1}`} onClick={() => openModal('slideshow', index)} role="presentation">
+        <div className={`img-${index + 1}`} onClick={() => openModal('slideshow', index)} role="presentation" key={index}>
           <img src={imageUrl} alt="" />
         </div>
       ))}
@@ -21,7 +22,7 @@ Photos.propTypes = {
 };
 
 Photos.defaultProps = {
-  images: [''],
+  images: [],
   openModal: () => { },
 };
 
