@@ -10,7 +10,7 @@ const Modal = (props) => {
   } = props;
 
   return (
-    <div className={`modal ${onEnter}`} id="gallery-modal">
+    <div className={`modal ${onEnter}`}>
       {view === 'slideshow' && (
         <SlideshowModal
           name={name}
