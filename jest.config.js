@@ -8,7 +8,16 @@ module.exports = {
     },
     {
       displayName: 'app-unit-test',
-      testMatch: ['<rootDir>/__tests__/*.test.jsx'],
+      testMatch: ['<rootDir>/__tests__/*-unit.test.jsx'],
+      transform: {
+        '^.+\\.jsx?$': 'babel-jest',
+        // '.+\\.(css|styl|less|sass|scss)$': '<rootDir>/node_modules/jest-css-modules-transform',
+      },
+      setupFiles: ['<rootDir>/__tests__/setupTests.js'],
+    },
+    {
+      displayName: 'app-integration-test',
+      testMatch: ['<rootDir>/__tests__/*-int.test.jsx'],
       transform: {
         '^.+\\.jsx?$': 'babel-jest',
         // '.+\\.(css|styl|less|sass|scss)$': '<rootDir>/node_modules/jest-css-modules-transform',

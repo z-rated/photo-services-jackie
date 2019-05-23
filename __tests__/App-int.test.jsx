@@ -3,6 +3,8 @@
 import Gallery from '../client/components/Gallery';
 import Photos from '../client/components/Photos';
 import Modal from '../client/components/Modal';
+import SlideshowModal from '../client/components/SlideshowModal';
+import GridModal from '../client/components/GridModal';
 
 const mockData = {
   name: 'Restaurant 1',
@@ -14,32 +16,84 @@ window.fetch = jest.fn().mockImplementation(() => Promise.resolve({
   json: () => Promise.resolve(mockImages),
 }));
 
-describe('Displays modal', () => {
-  test('renders Modal Component when showModal is true', () => {
+describe('Display modal by state', () => {
+  test('renders modal when showModal is true', () => {
     const wrapper = shallow(<Gallery />);
     wrapper.setState({ showModal: true }, () => {
       expect(wrapper.find(Modal)).toHaveLength(1);
     });
   });
 
-  test('does not render Modal Component when showModal is false', () => {
+  test('does not render modal when showModal is false', () => {
     const wrapper = shallow(<Gallery />);
     wrapper.setState({ showModal: false }, () => {
       expect(wrapper.find(Modal)).toHaveLength(0);
     });
   });
+});
 
-  // test('sets showModal state to true any photo in the gallery is clicked', () => {
-  //   const galleryWrapper = mount(<Gallery />);
-  //   const photosWrapper = shallow(<Photos images={mockImages} />);
-  //   const randomNum = Math.ceil(Math.random() * 7);
-  //   console.log('num is', randomNum);
-  //   photosWrapper.find(`.img-${randomNum}`).simulate('click');
-  //   console.log(galleryWrapper.state().showModal);
-  //   // expect(galleryWrapper.state().showModal).to.equal(true);
-  //   // console.log(mount(<Photos images={mockImages} />).debug());
-  //   // PhotosWrapper.find(`.img-${randomNum}`).simulate('click');
-  // });
+describe('Display modal by click events', () => {
+  let wrapper;
+  beforeEach(() => {
+    wrapper = mount(<Gallery />);
+    wrapper.setState({ imageUrls: mockImages });
+  });
+
+  test('renders slideshow modal when any photo is clicked', () => {
+    const randomNum = Math.ceil(Math.random() * mockImages.length);
+    wrapper.find(`.img-${randomNum}`).simulate('click');
+    expect(wrapper.state('showModal')).toEqual(true);
+    expect(wrapper.state('modalView')).toEqual('slideshow');
+    expect(wrapper.find(SlideshowModal)).toHaveLength(1);
+  });
+
+  test('renders grid modal when X PHOTOS button is clicked', () => {
+    wrapper.find('.show-grid-modal-box').simulate('click');
+    expect(wrapper.state('showModal')).toEqual(true);
+    expect(wrapper.state('modalView')).toEqual('grid');
+    expect(wrapper.find(GridModal)).toHaveLength(1);
+  });
+
+  test('closes grid modal when close button is clicked', () => {
+    wrapper.find('.show-grid-modal-box').simulate('click');
+    expect(wrapper.state('showModal')).toEqual(true);
+    wrapper.find('.close-modal').simulate('click');
+    setTimeout(() => {
+      expect(wrapper.find(Modal)).toHaveLength(0);
+      expect(wrapper.find(GridModal)).toHaveLength(0);
+      expect(wrapper.state('showModal')).toEqual(false);
+    }, 500);
+  });
+
+  test('closes slideshow modal when close button is clicked', () => {
+    const randomNum = Math.ceil(Math.random() * mockImages.length);
+    wrapper.find(`.img-${randomNum}`).simulate('click');
+    expect(wrapper.state('showModal')).toEqual(true);
+    wrapper.find('.close-modal').simulate('click');
+    setTimeout(() => {
+      expect(wrapper.find(Modal)).toHaveLength(0);
+      expect(wrapper.find(SlideshowModal)).toHaveLength(0);
+      expect(wrapper.state('showModal')).toEqual(false);
+    }, 500);
+  });
+});
+
+describe('Rendering in slideshow modal', () => {
+  let wrapper;
+  beforeEach(() => {
+    wrapper = mount(<Modal images={mockImages} view="slideshow" />);
+    const randomNum = Math.ceil(Math.random() * mockImages.length);
+    wrapper.setState({ currSlide: randomNum });
+  });
+
+  test('renders slideshow modal when any photo is clicked', () => {
+    const randomNum = Math.ceil(Math.random() * mockImages.length);
+    wrapper.find(`.img-${randomNum}`).simulate('click');
+    expect(wrapper.state('showModal')).toEqual(true);
+    expect(wrapper.find(SlideshowModal)).toHaveLength(1);
+  });
+
+
 });
 
 // TODO:
@@ -48,14 +102,6 @@ describe('Displays modal', () => {
 // sets [] as imageUrls if fetch fails
 // updates state after fetch request (imageUrls and restaurant name)
 // renders images upon mount
-
-// DISPLAYING MODAL
-// sets showModal state to true when photos are clicked
-// sets showModal state to true when show-grid-box is clicked
-// renders entire Modal Component when showModal is true
-// renders slideshow Modal when photos are clicked
-// renders grid Modal when show-grid-box is clicked
-// closes Modal Component when showModal is false
 
 // MODAL TRANSITIONS
 // adds transitionEnter class to Modal components when opening modal
