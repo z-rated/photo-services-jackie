@@ -43,7 +43,7 @@ GridModal.propTypes = {
 GridModal.defaultProps = {
   name: 'restuarant name',
   images: [],
-  transitionExit: () => { },
+  transitionExit: '',
   closeModal: () => { },
   changeView: () => { },
 };

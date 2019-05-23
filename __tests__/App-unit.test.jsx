@@ -4,6 +4,8 @@ import Gallery from '../client/components/Gallery';
 import Photos from '../client/components/Photos';
 import Modal from '../client/components/Modal';
 import ShowGridModalBox from '../client/components/ShowGridModalBox';
+import SlideshowModal from '../client/components/SlideshowModal';
+import GridModal from '../client/components/GridModal';
 
 const mockData = {
   name: 'Restaurant 1',
@@ -75,16 +77,26 @@ describe('ShowGridModalBox Component', () => {
   test('renders the correct number of photos', () => {
     const wrapper = shallow(<ShowGridModalBox />);
     wrapper.setProps({ images: mockImages });
-    const displayedNum = Number(wrapper.find('.show-grid-modal-box').text().slice(0, 1));
+    const displayedNum = Number(wrapper.find('.show-grid-modal-box').text().split(' ')[0]);
     expect(displayedNum).toBe(mockImages.length);
   });
 });
 
-// TODO:
-// SHOW GRID MODAL BOX
-// renders
-// renders correct number of photos
+describe('SlideshowModal Component', () => {
+  test('renders', () => {
+    const wrapper = shallow(<SlideshowModal />);
+    expect(wrapper.exists()).toBe(true);
+  });
+});
 
+describe('GridModal Component', () => {
+  test('renders', () => {
+    const wrapper = shallow(<GridModal />);
+    expect(wrapper.exists()).toBe(true);
+  });
+});
+
+// TODO:
 // SLIDESHOW MODAL
 // renders
 // renders title
