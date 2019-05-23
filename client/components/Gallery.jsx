@@ -21,6 +21,9 @@ class Gallery extends React.Component {
     this.getPhotos = this.getPhotos.bind(this);
     this.openModal = this.openModal.bind(this);
     this.closeModal = this.closeModal.bind(this);
+    this.changeView = this.changeView.bind(this);
+    this.prevSlide = this.prevSlide.bind(this);
+    this.nextSlide = this.nextSlide.bind(this);
   }
 
   componentDidMount() {
@@ -74,6 +77,43 @@ class Gallery extends React.Component {
     }, 300));
   }
 
+  changeView(style, index) {
+    if (style === 'slideshow') {
+      this.setState({
+        modalView: 'slideshow',
+        currSlide: index,
+      });
+    } else {
+      this.setState({
+        modalView: 'grid',
+      });
+    }
+  }
+
+  prevSlide() {
+    const { currSlide, imageUrls } = this.state;
+    const n = imageUrls.length;
+    if (currSlide === 0) {
+      this.setState({
+        currSlide: n - 1,
+      });
+    } else {
+      const prevSlide = currSlide - 1;
+      this.setState({
+        currSlide: prevSlide,
+      });
+    }
+  }
+
+  nextSlide() {
+    const { currSlide, imageUrls } = this.state;
+    const n = imageUrls.length;
+    const nextSlide = (currSlide + 1) % (n);
+    this.setState({
+      currSlide: nextSlide,
+    });
+  }
+
   render() {
     const {
       restaurantName, modalView, transitionEnter, transitionExit, imageUrls, showModal, currSlide,
@@ -90,6 +130,9 @@ class Gallery extends React.Component {
             images={imageUrls}
             currSlide={currSlide}
             closeModal={this.closeModal}
+            changeView={this.changeView}
+            prevSlide={this.prevSlide}
+            nextSlide={this.nextSlide}
           />
         )}
         <ShowGridModalBox images={imageUrls} openModal={this.openModal} />
