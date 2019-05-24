@@ -35,20 +35,18 @@ describe('Gallery Component', () => {
 });
 
 describe('Photos Component', () => {
-  const openModal = () => { };
-
   test('renders', () => {
-    const wrapper = shallow(<Photos images={mockImages} openModal={openModal} />);
+    const wrapper = shallow(<Photos images={mockImages} openModal={jest.fn()} />);
     expect(wrapper.exists()).toBe(true);
   });
 
   test('doesn\'t break without images', () => {
-    const wrapper = shallow(<Photos openModal={openModal} />);
+    const wrapper = shallow(<Photos openModal={jest.fn()} />);
     expect(wrapper.find('.photos-container div')).toHaveLength(0);
   });
 
   test('doesn\'t break with an empty array', () => {
-    const wrapper = shallow(<Photos images={[]} openModal={openModal} />);
+    const wrapper = shallow(<Photos images={[]} openModal={jest.fn()} />);
     expect(wrapper.find('.photos-container div')).toHaveLength(0);
   });
 

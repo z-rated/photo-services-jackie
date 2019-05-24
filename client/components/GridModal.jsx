@@ -22,7 +22,7 @@ const GridModal = (props) => {
       <div className={`grid-photo-view ${onExit}`}>
         <div className="grid-container">
           {images.map((image, index) => (
-            <div className="modal-img" onClick={() => changeView('slideshow', index)} role="presentation">
+            <div className="modal-img" onClick={() => changeView('slideshow', index)} role="presentation" key={index}>
               <img src={image} alt="" />
             </div>
           ))}

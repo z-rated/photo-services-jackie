@@ -13,7 +13,7 @@ const mockData = {
 const mockImages = mockData.photos;
 
 window.fetch = jest.fn().mockImplementation(() => Promise.resolve({
-  json: () => Promise.resolve(mockImages),
+  json: () => Promise.resolve(mockData),
 }));
 
 describe('Display modal by state', () => {
@@ -39,7 +39,7 @@ describe('Display modal by click events', () => {
     wrapper.setState({ imageUrls: mockImages });
   });
 
-  test('renders slideshow modal when any photo is clicked', () => {
+  test('renders slideshow modal on any image click', () => {
     const randomNum = Math.ceil(Math.random() * mockImages.length);
     wrapper.find(`.img-${randomNum}`).simulate('click');
     expect(wrapper.state('showModal')).toEqual(true);
@@ -47,7 +47,7 @@ describe('Display modal by click events', () => {
     expect(wrapper.find(SlideshowModal)).toHaveLength(1);
   });
 
-  test('renders grid modal when X PHOTOS button is clicked', () => {
+  test('renders grid modal on \'X PHOTOS +\' click', () => {
     wrapper.find('.show-grid-modal-box').simulate('click');
     expect(wrapper.state('showModal')).toEqual(true);
     expect(wrapper.state('modalView')).toEqual('grid');
@@ -78,22 +78,134 @@ describe('Display modal by click events', () => {
   });
 });
 
-describe('Rendering in slideshow modal', () => {
+describe('Rendering in slideshow modal view', () => {
   let wrapper;
+  let randomNum;
   beforeEach(() => {
-    wrapper = mount(<Modal images={mockImages} view="slideshow" />);
-    const randomNum = Math.ceil(Math.random() * mockImages.length);
-    wrapper.setState({ currSlide: randomNum });
+    wrapper = mount(<Gallery />);
+    wrapper.setState({ imageUrls: mockImages });
+    randomNum = Math.ceil(Math.random() * mockImages.length);
+    wrapper.find(`.img-${randomNum}`).simulate('click');
   });
 
-  test('renders slideshow modal when any photo is clicked', () => {
+  test('sets current slide in state to correct slide', () => {
+    expect(wrapper.state('currSlide')).toBe(randomNum - 1);
+  });
+
+  test('displays the correct slide numbers', () => {
+    const text = wrapper.find('.slideshow-view-index').text().split(' ');
+    const currSlide = Number(text[0]);
+    const totalSlides = Number(text[2]);
+    expect(currSlide).toEqual(randomNum);
+    expect(totalSlides).toEqual(mockImages.length);
+  });
+
+  test('renders the correct slide', () => {
+    expect(wrapper.find('.slideshow-img img').prop('src')).toBe(mockImages[randomNum - 1]);
+  });
+
+  test('displays previous slide on left arrow button click', () => {
+    const currSlide = wrapper.state('currSlide');
+    const prevSlide = currSlide === 0 ? mockImages.length - 1 : currSlide - 1;
+    wrapper.find('.container-prev-slide').simulate('click');
+    expect(wrapper.state('currSlide')).toBe(prevSlide);
+    expect(wrapper.find('.slideshow-img img').prop('src')).toBe(mockImages[prevSlide]);
+  });
+
+  test('displays last slide if on first slide', () => {
+    wrapper.find('.img-1').simulate('click');
+    const prevSlide = mockImages.length - 1;
+    wrapper.find('.container-prev-slide').simulate('click');
+    expect(wrapper.state('currSlide')).toBe(prevSlide);
+    expect(wrapper.find('.slideshow-img img').prop('src')).toBe(mockImages[prevSlide]);
+  });
+
+  test('displays next slide on right arrow button click', () => {
+    const currSlide = wrapper.state('currSlide');
+    const nextSlide = (currSlide + 1) % mockImages.length;
+    wrapper.find('.container-next-slide').simulate('click');
+    expect(wrapper.state('currSlide')).toBe(nextSlide);
+    expect(wrapper.find('.slideshow-img img').prop('src')).toBe(mockImages[nextSlide]);
+  });
+
+  test('displays first slide if on last slide', () => {
+    wrapper.find('.img-7').simulate('click');
+    wrapper.find('.container-next-slide').simulate('click');
+    expect(wrapper.state('currSlide')).toBe(0);
+    expect(wrapper.find('.slideshow-img img').prop('src')).toBe(mockImages[0]);
+  });
+
+  test('switches to grid view on grid button click', () => {
+    wrapper.find('.open-grid-svg').simulate('click');
+    expect(wrapper.state('modalView')).toBe('grid');
+    expect(wrapper.find(SlideshowModal)).toHaveLength(0);
+    expect(wrapper.find(GridModal)).toHaveLength(1);
+  });
+});
+
+describe('Rendering in grid modal view', () => {
+  let wrapper;
+  beforeEach(() => {
+    wrapper = mount(<Gallery />);
+    wrapper.setState({ imageUrls: mockImages });
+    wrapper.find('.show-grid-modal-box').simulate('click');
+  });
+
+  test('renders all images', () => {
+    expect(wrapper.find('.modal-img')).toHaveLength(mockImages.length);
+  });
+
+  test('switches to slideshow view on any image click', () => {
     const randomNum = Math.ceil(Math.random() * mockImages.length);
-    wrapper.find(`.img-${randomNum}`).simulate('click');
-    expect(wrapper.state('showModal')).toEqual(true);
+    wrapper.find('.modal-img').at(randomNum - 1).simulate('click');
+    expect(wrapper.state('modalView')).toBe('slideshow');
+    expect(wrapper.find(GridModal)).toHaveLength(0);
     expect(wrapper.find(SlideshowModal)).toHaveLength(1);
   });
 
+  test('switches to the correct slide in slideshow on image click', () => {
+    const randomNum = Math.ceil(Math.random() * mockImages.length);
+    wrapper.find('.modal-img').at(randomNum - 1).simulate('click');
+    expect(wrapper.state('currSlide')).toBe(randomNum - 1);
+  });
+});
 
+describe('Transition effects for slideshow modal', () => {
+  let wrapper;
+  beforeEach(() => {
+    wrapper = mount(<Gallery />);
+    wrapper.setState({ imageUrls: mockImages });
+    wrapper.find('.img-1').simulate('click');
+  });
+
+  test('adds zoomIn class to Modal component on open', () => {
+    expect(wrapper.find('.modal').hasClass('zoomIn')).toBe(true);
+  });
+
+  test('adds zoomOut class to slideshow image on close', () => {
+    wrapper.find('.close-modal').simulate('click');
+    expect(wrapper.find('.slideshow-photo-view').hasClass('zoomOut')).toBe(true);
+    expect(wrapper.find('.modal').hasClass('zoomIn')).toBe(false);
+  });
+});
+
+describe('Transition effects for grid modal', () => {
+  let wrapper;
+  beforeEach(() => {
+    wrapper = mount(<Gallery />);
+    wrapper.setState({ imageUrls: mockImages });
+    wrapper.find('.show-grid-modal-box').simulate('click');
+  });
+
+  test('adds zoomIn class to Modal component on open', () => {
+    expect(wrapper.find('.modal').hasClass('zoomIn')).toBe(true);
+  });
+
+  test('adds zoomOut class to GridModal component on close', () => {
+    wrapper.find('.close-modal').simulate('click');
+    expect(wrapper.find('.grid-photo-view').hasClass('zoomOut')).toBe(true);
+    expect(wrapper.find('.modal').hasClass('zoomIn')).toBe(false);
+  });
 });
 
 // TODO:
@@ -102,24 +214,3 @@ describe('Rendering in slideshow modal', () => {
 // sets [] as imageUrls if fetch fails
 // updates state after fetch request (imageUrls and restaurant name)
 // renders images upon mount
-
-// MODAL TRANSITIONS
-// adds transitionEnter class to Modal components when opening modal
-// adds transitionExit class to Modal components when closing
-// resets state in between transitions
-
-// SLIDESHOW MODAL
-// renders slideshow Modal when modalView state is set to 'slideshow'
-//    (randomize whichever photo is clicked on original page? beforeEach?)
-// sets currSlide state to correct slide
-// passes the correct currSlide to slideshowModal
-// renders the correct slide
-// updates modalView state to 'grid' when grid button is clicked -> switches to grid view
-//    (in both MODAL and GALLERY)
-// sets showModal to false when X button is clicked // closes modal AND slideshow modal
-
-// GRID MODAL
-// renders grid Modal when modalView state is set to 'grid'
-// update modalView state to 'slideshow' whenever any photo is clicked -> switch view
-//    (in both MODAL and GALLERY)
-// sets showModal to false when X button is clicked // closes modal AND grid modal 

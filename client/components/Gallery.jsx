@@ -69,6 +69,7 @@ class Gallery extends React.Component {
 
   closeModal() {
     this.setState({
+      onEnter: '',
       onExit: 'zoomOut',
     }, () => setTimeout(() => {
       this.setState({
