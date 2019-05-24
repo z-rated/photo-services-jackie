@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const GridModal = (props) => {
+export default function GridModal(props) {
   const {
     name, images, onExit, closeModal, changeView,
   } = props;
@@ -30,22 +30,18 @@ const GridModal = (props) => {
       </div>
     </div>
   );
-};
+}
 
 GridModal.propTypes = {
   name: PropTypes.string,
   images: PropTypes.arrayOf(PropTypes.string),
   onExit: PropTypes.string,
-  closeModal: PropTypes.func,
-  changeView: PropTypes.func,
+  closeModal: PropTypes.func.isRequired,
+  changeView: PropTypes.func.isRequired,
 };
 
 GridModal.defaultProps = {
   name: 'restuarant name',
   images: [],
   onExit: '',
-  closeModal: () => { },
-  changeView: () => { },
 };
-
-export default GridModal;

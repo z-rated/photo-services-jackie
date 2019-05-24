@@ -6,7 +6,7 @@
   "scripts": {
     "test": "jest --verbose --watchAll",
     "test:coverage": "jest --verbose --coverage",
-    "build": "webpack --mode production",
+    "build": "webpack",
     "seed": "node db/generateData.js",
     "server": "node server/server.js"
   },

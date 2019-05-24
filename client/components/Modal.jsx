@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import GridModal from './GridModal';
 import SlideshowModal from './SlideshowModal';
 
-const Modal = (props) => {
+export default function Modal(props) {
   const {
     name, view, images, onEnter, onExit, currSlide, closeModal,
     changeView, prevSlide, nextSlide,
@@ -34,7 +34,7 @@ const Modal = (props) => {
       )}
     </div>
   );
-};
+}
 
 
 Modal.propTypes = {
@@ -44,10 +44,10 @@ Modal.propTypes = {
   onEnter: PropTypes.string,
   onExit: PropTypes.string,
   currSlide: PropTypes.number,
-  closeModal: PropTypes.func,
-  changeView: PropTypes.func,
-  prevSlide: PropTypes.func,
-  nextSlide: PropTypes.func,
+  closeModal: PropTypes.func.isRequired,
+  changeView: PropTypes.func.isRequired,
+  prevSlide: PropTypes.func.isRequired,
+  nextSlide: PropTypes.func.isRequired,
 };
 
 Modal.defaultProps = {
@@ -57,10 +57,4 @@ Modal.defaultProps = {
   onEnter: '',
   onExit: '',
   currSlide: 0,
-  closeModal: () => { },
-  changeView: () => { },
-  prevSlide: () => { },
-  nextSlide: () => { },
 };
-
-export default Modal;

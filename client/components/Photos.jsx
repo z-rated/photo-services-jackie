@@ -2,7 +2,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Photos = ({ images, openModal }) => {
+export default function Photos({ images, openModal }) {
   const firstSeven = images.slice(0, 7);
 
   return (
@@ -14,16 +14,13 @@ const Photos = ({ images, openModal }) => {
       ))}
     </div>
   );
-};
+}
 
 Photos.propTypes = {
   images: PropTypes.arrayOf(PropTypes.string),
-  openModal: PropTypes.func,
+  openModal: PropTypes.func.isRequired,
 };
 
 Photos.defaultProps = {
   images: [],
-  openModal: () => { },
 };
-
-export default Photos;

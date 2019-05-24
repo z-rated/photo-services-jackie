@@ -42,38 +42,38 @@ describe('Display modal by click events', () => {
   test('renders slideshow modal on any image click', () => {
     const randomNum = Math.ceil(Math.random() * mockImages.length);
     wrapper.find(`.img-${randomNum}`).simulate('click');
-    expect(wrapper.state('showModal')).toEqual(true);
-    expect(wrapper.state('modalView')).toEqual('slideshow');
+    expect(wrapper.state('showModal')).toBe(true);
+    expect(wrapper.state('modalView')).toBe('slideshow');
     expect(wrapper.find(SlideshowModal)).toHaveLength(1);
   });
 
   test('renders grid modal on \'X PHOTOS +\' click', () => {
     wrapper.find('.show-grid-modal-box').simulate('click');
-    expect(wrapper.state('showModal')).toEqual(true);
-    expect(wrapper.state('modalView')).toEqual('grid');
+    expect(wrapper.state('showModal')).toBe(true);
+    expect(wrapper.state('modalView')).toBe('grid');
     expect(wrapper.find(GridModal)).toHaveLength(1);
   });
 
   test('closes grid modal when close button is clicked', () => {
     wrapper.find('.show-grid-modal-box').simulate('click');
-    expect(wrapper.state('showModal')).toEqual(true);
+    expect(wrapper.state('showModal')).toBe(true);
     wrapper.find('.close-modal').simulate('click');
     setTimeout(() => {
       expect(wrapper.find(Modal)).toHaveLength(0);
       expect(wrapper.find(GridModal)).toHaveLength(0);
-      expect(wrapper.state('showModal')).toEqual(false);
+      expect(wrapper.state('showModal')).toBe(false);
     }, 500);
   });
 
   test('closes slideshow modal when close button is clicked', () => {
     const randomNum = Math.ceil(Math.random() * mockImages.length);
     wrapper.find(`.img-${randomNum}`).simulate('click');
-    expect(wrapper.state('showModal')).toEqual(true);
+    expect(wrapper.state('showModal')).toBe(true);
     wrapper.find('.close-modal').simulate('click');
     setTimeout(() => {
       expect(wrapper.find(Modal)).toHaveLength(0);
       expect(wrapper.find(SlideshowModal)).toHaveLength(0);
-      expect(wrapper.state('showModal')).toEqual(false);
+      expect(wrapper.state('showModal')).toBe(false);
     }, 500);
   });
 });
@@ -96,8 +96,8 @@ describe('Rendering in slideshow modal view', () => {
     const text = wrapper.find('.slideshow-view-index').text().split(' ');
     const currSlide = Number(text[0]);
     const totalSlides = Number(text[2]);
-    expect(currSlide).toEqual(randomNum);
-    expect(totalSlides).toEqual(mockImages.length);
+    expect(currSlide).toBe(randomNum);
+    expect(totalSlides).toBe(mockImages.length);
   });
 
   test('renders the correct slide', () => {

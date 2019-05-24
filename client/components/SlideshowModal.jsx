@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const SlideshowModal = (props) => {
+export default function SlideshowModal(props) {
   const {
     name, images, onExit, closeModal, currSlide, changeView, nextSlide, prevSlide,
   } = props;
@@ -57,28 +57,22 @@ const SlideshowModal = (props) => {
 
     </div>
   );
-};
+}
 
 SlideshowModal.propTypes = {
   name: PropTypes.string,
   images: PropTypes.arrayOf(PropTypes.string),
   onExit: PropTypes.string,
-  closeModal: PropTypes.func,
   currSlide: PropTypes.number,
-  changeView: PropTypes.func,
-  nextSlide: PropTypes.func,
-  prevSlide: PropTypes.func,
+  closeModal: PropTypes.func.isRequired,
+  changeView: PropTypes.func.isRequired,
+  nextSlide: PropTypes.func.isRequired,
+  prevSlide: PropTypes.func.isRequired,
 };
 
 SlideshowModal.defaultProps = {
   name: 'restaurant name',
   images: [],
   onExit: '',
-  closeModal: () => { },
   currSlide: 0,
-  changeView: () => { },
-  nextSlide: () => { },
-  prevSlide: () => { },
 };
-
-export default SlideshowModal;

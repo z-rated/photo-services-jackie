@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 
-mongoose.connect('mongodb://localhost/restaurantphotos', { useNewUrlParser: true });
+process.env.MONGO_URI = 'mongodb://localhost/restaurantphotos';
+mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true });
 mongoose.set('useCreateIndex', true);
 
 const { Schema } = mongoose;
@@ -18,18 +19,10 @@ const getPhotos = (id, callback) => {
   Photo.findOne({ restaurantId: id }).exec(callback);
 };
 
-const seedDatabase = (records) => {
-  Photo.insertMany(records, (err) => {
-    if (err) {
-      console.log('Error inserting 100 records to database');
-    } else {
-      console.log('Database for photos and 100 records created!');
-      mongoose.connection.close();
-    }
-  });
-};
+const seedDatabase = records => Photo.insertMany(records);
 
 module.exports = {
+  photoSchema,
   getPhotos,
   seedDatabase,
 };
