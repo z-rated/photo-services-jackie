@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1558733698599" clover="3.2.0">
-  <project timestamp="1558733698599" name="All files">
-    <metrics statements="85" coveredstatements="84" conditionals="16" coveredconditionals="16" methods="28" coveredmethods="27" elements="129" coveredelements="127" complexity="0" loc="85" ncloc="85" packages="3" files="8" classes="8"/>
+<coverage generated="1558736939088" clover="3.2.0">
+  <project timestamp="1558736939088" name="All files">
+    <metrics statements="84" coveredstatements="83" conditionals="16" coveredconditionals="16" methods="28" coveredmethods="27" elements="128" coveredelements="126" complexity="0" loc="84" ncloc="84" packages="3" files="8" classes="8"/>
     <package name="client.components">
       <metrics statements="57" coveredstatements="56" conditionals="12" coveredconditionals="12" methods="24" coveredmethods="23"/>
       <file name="Gallery.jsx" path="/Users/eugenia/Documents/HR/fec-zagat/zagat-photos-service/client/components/Gallery.jsx">
@@ -81,9 +81,9 @@
       </file>
     </package>
     <package name="db">
-      <metrics statements="13" coveredstatements="13" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
+      <metrics statements="12" coveredstatements="12" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
       <file name="schema.js" path="/Users/eugenia/Documents/HR/fec-zagat/zagat-photos-service/db/schema.js">
-        <metrics statements="13" coveredstatements="13" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
+        <metrics statements="12" coveredstatements="12" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
         <line num="1" count="2" type="stmt"/>
         <line num="3" count="2" type="stmt"/>
         <line num="4" count="2" type="stmt"/>
@@ -95,8 +95,7 @@
         <line num="18" count="2" type="stmt"/>
         <line num="19" count="5" type="stmt"/>
         <line num="22" count="2" type="stmt"/>
-        <line num="23" count="2" type="stmt"/>
-        <line num="34" count="2" type="stmt"/>
+        <line num="24" count="2" type="stmt"/>
       </file>
     </package>
     <package name="server">

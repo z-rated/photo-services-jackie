@@ -44,6 +44,7 @@ describe('Display modal by click events', () => {
     wrapper.find(`.img-${randomNum}`).simulate('click');
     expect(wrapper.state('showModal')).toBe(true);
     expect(wrapper.state('modalView')).toBe('slideshow');
+    expect(wrapper.find(Modal)).toHaveLength(1);
     expect(wrapper.find(SlideshowModal)).toHaveLength(1);
   });
 
@@ -51,6 +52,7 @@ describe('Display modal by click events', () => {
     wrapper.find('.show-grid-modal-box').simulate('click');
     expect(wrapper.state('showModal')).toBe(true);
     expect(wrapper.state('modalView')).toBe('grid');
+    expect(wrapper.find(Modal)).toHaveLength(1);
     expect(wrapper.find(GridModal)).toHaveLength(1);
   });
 

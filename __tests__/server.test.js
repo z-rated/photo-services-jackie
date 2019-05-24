@@ -37,8 +37,8 @@ describe('GET /api/restaurants/:id/photos', () => {
 
   test('It should respond with an array of 15 - 20 urls', async () => {
     const regex = /https:\/\/s3\.amazonaws\.com\/eugeniazagatphotos\/\w{10}\.jpg/;
-    expect(response.body.photos.length).toBeGreaterThanOrEqual(10);
-    expect(response.body.photos.length).toBeLessThanOrEqual(15);
+    expect(response.body.photos.length).toBeGreaterThanOrEqual(15);
+    expect(response.body.photos.length).toBeLessThanOrEqual(20);
     expect(response.body.photos[0]).toMatch(regex);
   });
 });
