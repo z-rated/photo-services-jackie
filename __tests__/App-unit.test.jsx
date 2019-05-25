@@ -165,37 +165,37 @@ describe('SlideshowModal Component', () => {
 
   test('renders the correct image', () => {
     wrapper.setProps({ currSlide: 4, images: mockImages });
-    expect(wrapper.find('.slideshow-img img').prop('src')).toBe(mockImages[4]);
+    expect(wrapper.find('SlideshowViewer img').prop('src')).toBe(mockImages[4]);
   });
 
   test('renders left arrow button', () => {
-    expect(wrapper.find('.container-prev-slide')).toHaveLength(1);
+    expect(wrapper.find('PrevSlideBtn')).toHaveLength(1);
   });
 
   test('handles clicks on left arrow button', () => {
     const prevSlideStub = sinon.spy();
     wrapper.setProps({ prevSlide: prevSlideStub });
     expect(prevSlideStub.calledOnce).toBe(false);
-    wrapper.find('.container-prev-slide').simulate('click');
+    wrapper.find('PrevSlideBtn').simulate('click');
     expect(prevSlideStub.calledOnce).toBe(true);
   });
 
   test('renders right arrow button', () => {
-    expect(wrapper.find('.container-next-slide')).toHaveLength(1);
+    expect(wrapper.find('NextSlideBtn')).toHaveLength(1);
   });
 
   test('handles clicks on right arrow button', () => {
     const nextSlideStub = sinon.spy();
     wrapper.setProps({ nextSlide: nextSlideStub });
     expect(nextSlideStub.calledOnce).toBe(false);
-    wrapper.find('.container-next-slide').simulate('click');
+    wrapper.find('NextSlideBtn').simulate('click');
     expect(nextSlideStub.calledOnce).toBe(true);
   });
 
   test('renders footer', () => {
-    expect(wrapper.find('.slideshow-footer')).toHaveLength(1);
-    expect(wrapper.find('.slideshow-user-avatar')).toHaveLength(1);
-    expect(wrapper.find('.slideshow-user-name')).toHaveLength(1);
+    expect(wrapper.find('SlideshowFooter')).toHaveLength(1);
+    expect(wrapper.find('SlideshowUserAvatar')).toHaveLength(1);
+    expect(wrapper.find('SlideshowUserName')).toHaveLength(1);
   });
 });
 
@@ -214,18 +214,18 @@ describe('GridModal Component', () => {
 
   test('renders restaurant name', () => {
     wrapper.setProps({ name: 'De Kas' });
-    expect(wrapper.find('.modal-title').text()).toBe('De Kas');
+    expect(wrapper.find('ModalTitle').text()).toBe('De Kas');
   });
 
   test('renders the close modal button', () => {
-    expect(wrapper.find('.close-modal')).toHaveLength(1);
+    expect(wrapper.find('CloseModalIcon')).toHaveLength(1);
   });
 
   test('handles clicks on the close modal button', () => {
     const closeModalStub = sinon.spy();
     wrapper.setProps({ closeModal: closeModalStub });
     expect(closeModalStub.calledOnce).toBe(false);
-    wrapper.find('.close-modal').simulate('click');
+    wrapper.find('CloseModalIcon').simulate('click');
     expect(closeModalStub.calledOnce).toBe(true);
   });
 

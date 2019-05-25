@@ -220,7 +220,7 @@ SLIDESHOW
     fill: rgba(16, 24, 32, 1);
 } */
 
-/*slideshow buttons*/
+/* slideshow buttons
 .container-prev-slide,
 .container-next-slide {
     position: absolute;
@@ -250,10 +250,10 @@ SLIDESHOW
 .container-next-slide:hover {
     background:rgba(16,24,32,0.95); 
     cursor: pointer;
-}
+} */
 
 /*slideshow images*/
-.slideshow-photo-view {
+/* .slideshow-photo-view {
     height: calc(100vh - 76px - 92px - 20px);
     padding: 10px 40px;
 }
@@ -271,10 +271,10 @@ SLIDESHOW
     height: 100%;
     width: 100%;
     object-fit: contain;
-}
+} */
 
 /*slideshow footer*/
-.slideshow-footer {
+/* .slideshow-footer {
     width: 100%;
     height: 52px;
 }
@@ -308,7 +308,7 @@ SLIDESHOW
     text-transform: uppercase;
     vertical-align: middle;
     text-align: left;
-}
+} */
 
 /* ===============================
 GRID MODAL

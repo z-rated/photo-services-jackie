@@ -103,38 +103,38 @@ describe('Rendering in slideshow modal view', () => {
   });
 
   test('renders the correct slide', () => {
-    expect(wrapper.find('.slideshow-img img').prop('src')).toBe(mockImages[randomNum]);
+    expect(wrapper.find('SlideshowViewer img').prop('src')).toBe(mockImages[randomNum]);
   });
 
   test('displays previous slide on left arrow button click', () => {
     const currSlide = wrapper.state('currSlide');
     const prevSlide = currSlide === 0 ? mockImages.length - 1 : currSlide - 1;
-    wrapper.find('.container-prev-slide').simulate('click');
+    wrapper.find('PrevSlideBtn').simulate('click');
     expect(wrapper.state('currSlide')).toBe(prevSlide);
-    expect(wrapper.find('.slideshow-img img').prop('src')).toBe(mockImages[prevSlide]);
+    expect(wrapper.find('SlideshowViewer img').prop('src')).toBe(mockImages[prevSlide]);
   });
 
   test('displays last slide if on first slide', () => {
     wrapper.find('RestaurantPhoto').first().simulate('click');
     const prevSlide = mockImages.length - 1;
-    wrapper.find('.container-prev-slide').simulate('click');
+    wrapper.find('PrevSlideBtn').simulate('click');
     expect(wrapper.state('currSlide')).toBe(prevSlide);
-    expect(wrapper.find('.slideshow-img img').prop('src')).toBe(mockImages[prevSlide]);
+    expect(wrapper.find('SlideshowViewer img').prop('src')).toBe(mockImages[prevSlide]);
   });
 
   test('displays next slide on right arrow button click', () => {
     const currSlide = wrapper.state('currSlide');
     const nextSlide = (currSlide + 1) % mockImages.length;
-    wrapper.find('.container-next-slide').simulate('click');
+    wrapper.find('NextSlideBtn').simulate('click');
     expect(wrapper.state('currSlide')).toBe(nextSlide);
-    expect(wrapper.find('.slideshow-img img').prop('src')).toBe(mockImages[nextSlide]);
+    expect(wrapper.find('SlideshowViewer img').prop('src')).toBe(mockImages[nextSlide]);
   });
 
   test('displays first slide if on last slide', () => {
     wrapper.find('RestaurantPhoto').last().simulate('click');
-    wrapper.find('.container-next-slide').simulate('click');
+    wrapper.find('NextSlideBtn').simulate('click');
     expect(wrapper.state('currSlide')).toBe(0);
-    expect(wrapper.find('.slideshow-img img').prop('src')).toBe(mockImages[0]);
+    expect(wrapper.find('SlideshowViewer img').prop('src')).toBe(mockImages[0]);
   });
 
   test('switches to grid view on grid button click', () => {
@@ -186,7 +186,7 @@ describe('Transition effects for slideshow modal', () => {
 
   test('adds zoomOut class to slideshow image on close', () => {
     wrapper.find('CloseModalIcon').simulate('click');
-    expect(wrapper.find('.slideshow-photo-view').hasClass('zoomOut')).toBe(true);
+    expect(wrapper.find('SlideshowViewer').hasClass('zoomOut')).toBe(true);
     expect(wrapper.find('ModalContainer').hasClass('zoomIn')).toBe(false);
   });
 });
@@ -204,7 +204,7 @@ describe('Transition effects for grid modal', () => {
   });
 
   test('adds zoomOut class to GridModal component on close', () => {
-    wrapper.find('.close-modal').simulate('click');
+    wrapper.find('CloseModalIcon').simulate('click');
     expect(wrapper.find('.grid-photo-view').hasClass('zoomOut')).toBe(true);
     expect(wrapper.find('ModalContainer').hasClass('zoomIn')).toBe(false);
   });

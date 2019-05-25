@@ -59,7 +59,7 @@ export default function Photos({ images, openModal }) {
   const firstSeven = images.slice(0, 7);
 
   return (
-    <PhotosContainer className="photos-container">
+    <PhotosContainer>
       {firstSeven.map((imageUrl, index) => (
         <RestaurantPhoto i={index} onClick={() => openModal('slideshow', index)} role="presentation" key={index}>
           <img src={imageUrl} alt="" />
