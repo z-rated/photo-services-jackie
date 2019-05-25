@@ -42,20 +42,20 @@ describe('Photos Component', () => {
 
   test('doesn\'t break without images', () => {
     const wrapper = shallow(<Photos openModal={jest.fn()} />);
-    expect(wrapper.find('.photos-container div')).toHaveLength(0);
+    expect(wrapper.find('RestaurantPhoto')).toHaveLength(0);
   });
 
   test('doesn\'t break with an empty array', () => {
     const wrapper = shallow(<Photos images={[]} openModal={jest.fn()} />);
-    expect(wrapper.find('.photos-container div')).toHaveLength(0);
+    expect(wrapper.find('RestaurantPhoto')).toHaveLength(0);
   });
 
   test('handles clicks on any photo', () => {
     const openModalStub = sinon.spy();
     const wrapper = shallow(<Photos images={mockImages} openModal={openModalStub} />);
-    const randomNum = Math.ceil(Math.random() * mockImages.length);
+    const randomNum = Math.floor(Math.random() * mockImages.length);
     expect(openModalStub.calledOnce).toBe(false);
-    wrapper.find(`.img-${randomNum}`).simulate('click');
+    wrapper.find('RestaurantPhoto').at(randomNum).simulate('click');
     expect(openModalStub.calledOnce).toBe(true);
   });
 });
@@ -69,7 +69,7 @@ describe('ShowGridModalBox Component', () => {
   test('renders the correct number of photos', () => {
     const wrapper = shallow(<ShowGridModalBox openModal={jest.fn()} />);
     wrapper.setProps({ images: mockImages });
-    const displayedNum = Number(wrapper.find('.show-grid-modal-box').text().split(' ')[0]);
+    const displayedNum = Number(wrapper.find('OpenGridBox').text().split(' ')[0]);
     expect(displayedNum).toBe(mockImages.length);
   });
 
@@ -77,7 +77,7 @@ describe('ShowGridModalBox Component', () => {
     const openModalStub = sinon.spy();
     const wrapper = shallow(<ShowGridModalBox images={mockImages} openModal={openModalStub} />);
     expect(openModalStub.calledOnce).toBe(false);
-    wrapper.find('.show-grid-modal-box').simulate('click');
+    wrapper.find('OpenGridBox').simulate('click');
     expect(openModalStub.calledOnce).toBe(true);
   });
 });
@@ -125,41 +125,41 @@ describe('SlideshowModal Component', () => {
 
   test('renders restaurant name', () => {
     wrapper.setProps({ name: 'De Kas' });
-    expect(wrapper.find('.modal-title').text()).toBe('De Kas');
+    expect(wrapper.find('ModalTitle').text()).toBe('De Kas');
   });
 
   test('renders slideshow button bar', () => {
-    expect(wrapper.find('.button-bar')).toHaveLength(1);
+    expect(wrapper.find('ButtonBar')).toHaveLength(1);
   });
 
   test('renders the correct slide number', () => {
     wrapper.setProps({ currSlide: 1, images: mockImages });
-    const text = wrapper.find('.slideshow-view-index').text().split(' ');
+    const text = wrapper.find('SlideshowViewIndex').text().split(' ');
     expect(Number(text[0])).toBe(2);
     expect(Number(text[2])).toBe(mockImages.length);
   });
 
   test('renders the grid view button', () => {
-    expect(wrapper.find('.open-grid-view')).toHaveLength(1);
+    expect(wrapper.find('GridIcon')).toHaveLength(1);
   });
 
   test('handles clicks on the grid view button', () => {
     const changeViewStub = sinon.spy();
     wrapper.setProps({ changeView: changeViewStub });
     expect(changeViewStub.calledOnce).toBe(false);
-    wrapper.find('.open-grid-svg').simulate('click');
+    wrapper.find('GridIcon').simulate('click');
     expect(changeViewStub.calledOnce).toBe(true);
   });
 
   test('renders the close modal button', () => {
-    expect(wrapper.find('.close-modal')).toHaveLength(1);
+    expect(wrapper.find('CloseModalIcon')).toHaveLength(1);
   });
 
   test('handles clicks on the close modal button', () => {
     const closeModalStub = sinon.spy();
     wrapper.setProps({ closeModal: closeModalStub });
     expect(closeModalStub.calledOnce).toBe(false);
-    wrapper.find('.close-modal').simulate('click');
+    wrapper.find('CloseModalIcon').simulate('click');
     expect(closeModalStub.calledOnce).toBe(true);
   });
 

@@ -1,7 +1,20 @@
 import React from 'react';
+import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import GridModal from './GridModal';
 import SlideshowModal from './SlideshowModal';
+
+const ModalContainer = styled.div`
+  display: block;
+  position: fixed;
+  z-index: 2;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(16,24,32,.95); 
+`;
 
 export default function Modal(props) {
   const {
@@ -10,7 +23,7 @@ export default function Modal(props) {
   } = props;
 
   return (
-    <div className={`modal ${onEnter}`}>
+    <ModalContainer className={`${onEnter}`}>
       {view === 'slideshow' && (
         <SlideshowModal
           name={name}
@@ -32,7 +45,7 @@ export default function Modal(props) {
           changeView={changeView}
         />
       )}
-    </div>
+    </ModalContainer>
   );
 }
 
