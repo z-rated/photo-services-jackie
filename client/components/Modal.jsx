@@ -6,18 +6,18 @@ import { ModalContainer } from '../styled/Modal';
 
 export default function Modal(props) {
   const {
-    name, view, images, onEnter, onExit, currSlide, closeModal,
+    name, view, images, handleEnter, handleExit, currSlide, closeModal,
     changeView, prevSlide, nextSlide,
   } = props;
 
   return (
-    <ModalContainer onEnter={onEnter}>
+    <ModalContainer handleEnter={handleEnter}>
       {view === 'slideshow' && (
         <SlideshowModal
           name={name}
           images={images}
           currSlide={currSlide}
-          onExit={onExit}
+          handleExit={handleExit}
           closeModal={closeModal}
           changeView={changeView}
           prevSlide={prevSlide}
@@ -28,7 +28,7 @@ export default function Modal(props) {
         <GridModal
           name={name}
           images={images}
-          onExit={onExit}
+          handleExit={handleExit}
           closeModal={closeModal}
           changeView={changeView}
         />
@@ -42,8 +42,8 @@ Modal.propTypes = {
   name: PropTypes.string,
   view: PropTypes.string,
   images: PropTypes.arrayOf(PropTypes.string),
-  onEnter: PropTypes.bool,
-  onExit: PropTypes.bool,
+  handleEnter: PropTypes.bool,
+  handleExit: PropTypes.bool,
   currSlide: PropTypes.number,
   closeModal: PropTypes.func.isRequired,
   changeView: PropTypes.func.isRequired,
@@ -55,7 +55,7 @@ Modal.defaultProps = {
   name: 'restaurant name',
   view: 'slideshow',
   images: [],
-  onEnter: false,
-  onExit: false,
+  handleEnter: false,
+  handleExit: false,
   currSlide: 0,
 };

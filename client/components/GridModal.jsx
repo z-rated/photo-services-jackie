@@ -7,7 +7,7 @@ import { GridViewer, GridModalPhoto } from '../styled/GridModal';
 
 export default function GridModal(props) {
   const {
-    name, images, onExit, closeModal, changeView,
+    name, images, handleExit, closeModal, changeView,
   } = props;
 
   return (
@@ -21,7 +21,7 @@ export default function GridModal(props) {
           </svg>
         </CloseModalIcon>
       </ButtonBar>
-      <GridViewer onExit={onExit}>
+      <GridViewer handleExit={handleExit}>
         {images.map((image, index) => (
           <GridModalPhoto onClick={() => changeView('slideshow', index)} role="presentation" key={index}>
             <img src={image} alt="" />
@@ -35,7 +35,7 @@ export default function GridModal(props) {
 GridModal.propTypes = {
   name: PropTypes.string,
   images: PropTypes.arrayOf(PropTypes.string),
-  onExit: PropTypes.bool,
+  handleExit: PropTypes.bool,
   closeModal: PropTypes.func.isRequired,
   changeView: PropTypes.func.isRequired,
 };
@@ -43,5 +43,5 @@ GridModal.propTypes = {
 GridModal.defaultProps = {
   name: 'restuarant name',
   images: [],
-  onExit: false,
+  handleExit: false,
 };

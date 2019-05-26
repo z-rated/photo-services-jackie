@@ -10,7 +10,7 @@ export const GridViewer = styled.div`
   flex-wrap: wrap;
   justify-content: center;
   padding: 2px;
-  animation-name: ${props => (props.onExit ? zoomOut : 'none')};
+  animation-name: ${props => (props.handleExit ? zoomOut : 'none')};
   animation-duration: 0.3s;
 
   &::-webkit-scrollbar {

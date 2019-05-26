@@ -231,7 +231,7 @@ describe('GridModal Component', () => {
 
   test('renders all images', () => {
     wrapper.setProps({ images: mockImages });
-    expect(wrapper.find('.modal-img')).toHaveLength(mockImages.length);
+    expect(wrapper.find('GridModalPhoto')).toHaveLength(mockImages.length);
   });
 
   test('handles clicks on any image', () => {
@@ -239,7 +239,7 @@ describe('GridModal Component', () => {
     const changeViewStub = sinon.spy();
     wrapper.setProps({ changeView: changeViewStub, images: mockImages });
     expect(changeViewStub.calledOnce).toBe(false);
-    wrapper.find('.modal-img').at(randomNum - 1).simulate('click');
+    wrapper.find('GridModalPhoto').at(randomNum - 1).simulate('click');
     expect(changeViewStub.calledOnce).toBe(true);
   });
 });

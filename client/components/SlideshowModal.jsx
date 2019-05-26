@@ -10,7 +10,7 @@ import {
 
 export default function SlideshowModal(props) {
   const {
-    name, images, onExit, closeModal, currSlide, changeView, nextSlide, prevSlide,
+    name, images, handleExit, closeModal, currSlide, changeView, nextSlide, prevSlide,
   } = props;
 
   return (
@@ -31,7 +31,7 @@ export default function SlideshowModal(props) {
           </svg>
         </CloseModalIcon>
       </ButtonBar>
-      <SlideshowViewer onExit={onExit}><img src={images[currSlide]} alt="" /></SlideshowViewer>
+      <SlideshowViewer handleExit={handleExit}><img src={images[currSlide]} alt="" /></SlideshowViewer>
       <PrevSlideBtn onClick={prevSlide}>
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
           <path d="M15.41 16.59L10.83 12l4.58-4.59L14 6l-6 6 6 6 1.41-1.41z" />
@@ -56,7 +56,7 @@ export default function SlideshowModal(props) {
 SlideshowModal.propTypes = {
   name: PropTypes.string,
   images: PropTypes.arrayOf(PropTypes.string),
-  onExit: PropTypes.bool,
+  handleExit: PropTypes.bool,
   currSlide: PropTypes.number,
   closeModal: PropTypes.func.isRequired,
   changeView: PropTypes.func.isRequired,
@@ -67,6 +67,6 @@ SlideshowModal.propTypes = {
 SlideshowModal.defaultProps = {
   name: 'restaurant name',
   images: [],
-  onExit: false,
+  handleExit: false,
   currSlide: 0,
 };

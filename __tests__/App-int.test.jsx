@@ -154,12 +154,12 @@ describe('Rendering in grid modal view', () => {
   });
 
   test('renders all images', () => {
-    expect(wrapper.find('.modal-img')).toHaveLength(mockImages.length);
+    expect(wrapper.find('GridModalPhoto')).toHaveLength(mockImages.length);
   });
 
   test('switches to slideshow view on any image click', () => {
     const randomNum = Math.ceil(Math.random() * mockImages.length);
-    wrapper.find('.modal-img').at(randomNum - 1).simulate('click');
+    wrapper.find('GridModalPhoto').at(randomNum - 1).simulate('click');
     expect(wrapper.state('modalView')).toBe('slideshow');
     expect(wrapper.find(GridModal)).toHaveLength(0);
     expect(wrapper.find(SlideshowModal)).toHaveLength(1);
@@ -167,7 +167,7 @@ describe('Rendering in grid modal view', () => {
 
   test('switches to the correct slide in slideshow on image click', () => {
     const randomNum = Math.ceil(Math.random() * mockImages.length);
-    wrapper.find('.modal-img').at(randomNum - 1).simulate('click');
+    wrapper.find('GridModalPhoto').at(randomNum - 1).simulate('click');
     expect(wrapper.state('currSlide')).toBe(randomNum - 1);
   });
 });
@@ -180,14 +180,14 @@ describe('Transition effects for slideshow modal', () => {
     wrapper.find('RestaurantPhoto').first().simulate('click');
   });
 
-  test('adds zoomIn class to Modal component on open', () => {
-    expect(wrapper.find('ModalContainer').hasClass('zoomIn')).toBe(true);
+  test('sets handleEnter to true when Modal is open', () => {
+    expect(wrapper.find('ModalContainer').prop('handleEnter')).toBe(true);
   });
 
-  test('adds zoomOut class to slideshow image on close', () => {
+  test('sets handleExit to true when Modal is closed', () => {
     wrapper.find('CloseModalIcon').simulate('click');
-    expect(wrapper.find('SlideshowViewer').hasClass('zoomOut')).toBe(true);
-    expect(wrapper.find('ModalContainer').hasClass('zoomIn')).toBe(false);
+    expect(wrapper.find('SlideshowViewer').prop('handleExit')).toBe(true);
+    expect(wrapper.find('ModalContainer').prop('handleEnter')).toBe(false);
   });
 });
 
@@ -199,14 +199,14 @@ describe('Transition effects for grid modal', () => {
     wrapper.find('OpenGridBox').simulate('click');
   });
 
-  test('adds zoomIn class to Modal component on open', () => {
-    expect(wrapper.find('ModalContainer').hasClass('zoomIn')).toBe(true);
+  test('sets handleEnter to true when Modal is open', () => {
+    expect(wrapper.find('ModalContainer').prop('handleEnter')).toBe(true);
   });
 
-  test('adds zoomOut class to GridModal component on close', () => {
+  test('sets handleExit to true when Modal is closed', () => {
     wrapper.find('CloseModalIcon').simulate('click');
-    expect(wrapper.find('.grid-photo-view').hasClass('zoomOut')).toBe(true);
-    expect(wrapper.find('ModalContainer').hasClass('zoomIn')).toBe(false);
+    expect(wrapper.find('GridViewer').prop('handleExit')).toBe(true);
+    expect(wrapper.find('ModalContainer').prop('handleEnter')).toBe(false);
   });
 });
 

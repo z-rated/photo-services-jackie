@@ -11,7 +11,7 @@ export const ModalContainer = styled.div`
   height: 100%;
   overflow: auto;
   background-color: rgba(16,24,32,.95); 
-  animation-name: ${props => (props.onEnter ? zoomIn : 'none')};
+  animation-name: ${props => (props.handleEnter ? zoomIn : 'none')};
   animation-duration: 0.3s;
 `;
 

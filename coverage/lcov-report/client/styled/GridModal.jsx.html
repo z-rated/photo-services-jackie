@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <title>Code coverage report for client/components/SlideshowModal.jsx</title>
+    <title>Code coverage report for client/styled/GridModal.jsx</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../prettify.css" />
     <link rel="stylesheet" href="../../base.css" />
@@ -16,28 +16,28 @@
 <div class='wrapper'>
   <div class='pad1'>
     <h1>
-      <a href="../../index.html">All files</a> / <a href="index.html">client/components</a> SlideshowModal.jsx
+      <a href="../../index.html">All files</a> / <a href="index.html">client/styled</a> GridModal.jsx
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>5/5</span>
+        <span class='fraction'>3/3</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
         <span class="quiet">Branches</span>
-        <span class='fraction'>0/0</span>
-      </div>
-      <div class='fl pad1y space-right2'>
-        <span class="strong">100% </span>
-        <span class="quiet">Functions</span>
         <span class='fraction'>2/2</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>1/1</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">100% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>5/5</span>
+        <span class='fraction'>3/3</span>
       </div>
     </div>
     <p class="quiet">
@@ -113,12 +113,19 @@
 <a name='L65'></a><a href='#L65'>65</a>
 <a name='L66'></a><a href='#L66'>66</a>
 <a name='L67'></a><a href='#L67'>67</a>
-<a name='L68'></a><a href='#L68'>68</a>
-<a name='L69'></a><a href='#L69'>69</a>
-<a name='L70'></a><a href='#L70'>70</a>
-<a name='L71'></a><a href='#L71'>71</a>
-<a name='L72'></a><a href='#L72'>72</a>
-<a name='L73'></a><a href='#L73'>73</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L68'></a><a href='#L68'>68</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">15x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -131,9 +138,8 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">53x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">53x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -173,95 +179,74 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React from 'react';
-import PropTypes from 'prop-types';
-import { ModalTitle } from '../styled/Modal';
-import { ButtonBar, PrevSlideBtn, NextSlideBtn } from '../styled/Buttons';
-import { GridIcon, CloseModalIcon } from '../styled/Icons';
-import {
-  SlideshowViewIndex, SlideshowViewer, SlideshowFooter,
-  SlideshowSeparator, SlideshowUserAvatar, SlideshowUserName,
-} from '../styled/SlideshowModal';
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import styled from 'styled-components';
+import { zoomOut } from './Keyframes';
 &nbsp;
-export default function SlideshowModal(props) {
-  const {
-    name, images, handleExit, closeModal, currSlide, changeView, nextSlide, prevSlide,
-  } = props;
+export const GridViewer = styled.div`
+  height: calc(100vh - 76px - 20px);
+  width: 96%;
+  margin: 1% 2%;
+  overflow: scroll;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 2px;
+  animation-name: ${props =&gt; (props.handleExit ? zoomOut : 'none')};
+  animation-duration: 0.3s;
 &nbsp;
-  return (
-    &lt;div className="modal-dialog"&gt;
-      &lt;ModalTitle&gt;{name}&lt;/ModalTitle&gt;
-      &lt;ButtonBar&gt;
-        &lt;SlideshowViewIndex&gt;{`${currSlide + 1} of ${images.length}`}&lt;/SlideshowViewIndex&gt;
-        &lt;GridIcon onClick={() =&gt; changeView('grid')} role="button"&gt;
-          &lt;svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"&gt;
-            &lt;path d="M4 8h4V4H4v4zm6 12h4v-4h-4v4zm-6 0h4v-4H4v4zm0-6h4v-4H4v4zm6 0h4v-4h-4v4zm6-10v4h4V4h-4zm-6 4h4V4h-4v4zm6 6h4v-4h-4v4zm0 6h4v-4h-4v4z" /&gt;
-            &lt;path d="M0 0h24v24H0z" fill="none" /&gt;
-          &lt;/svg&gt;
-        &lt;/GridIcon&gt;
-        &lt;CloseModalIcon onClick={closeModal}&gt;
-          &lt;svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"&gt;
-            &lt;path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z" /&gt;
-            &lt;path d="M0 0h24v24H0z" fill="none" /&gt;
-          &lt;/svg&gt;
-        &lt;/CloseModalIcon&gt;
-      &lt;/ButtonBar&gt;
-      &lt;SlideshowViewer handleExit={handleExit}&gt;&lt;img src={images[currSlide]} alt="" /&gt;&lt;/SlideshowViewer&gt;
-      &lt;PrevSlideBtn onClick={prevSlide}&gt;
-        &lt;svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"&gt;
-          &lt;path d="M15.41 16.59L10.83 12l4.58-4.59L14 6l-6 6 6 6 1.41-1.41z" /&gt;
-          &lt;path fill="none" d="M0 0h24v24H0V0z" /&gt;
-        &lt;/svg&gt;
-      &lt;/PrevSlideBtn&gt;
-      &lt;NextSlideBtn onClick={nextSlide}&gt;
-        &lt;svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"&gt;
-          &lt;path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z" /&gt;
-          &lt;path fill="none" d="M0 0h24v24H0V0z" /&gt;
-        &lt;/svg&gt;
-      &lt;/NextSlideBtn&gt;
-      &lt;SlideshowFooter&gt;
-        &lt;SlideshowSeparator /&gt;
-        &lt;SlideshowUserAvatar&gt;&lt;img src="http://s3.amazonaws.com/eugeniazagatphotos/user-avatar.png" alt="" /&gt;&lt;/SlideshowUserAvatar&gt;
-        &lt;SlideshowUserName&gt;a google user&lt;/SlideshowUserName&gt;
-      &lt;/SlideshowFooter&gt;
-    &lt;/div&gt;
-  );
-}
+  &amp;::-webkit-scrollbar {
+    width: 10px;
+  }
+  &amp;::-webkit-scrollbar-thumb {
+    background: #e1e1e1;
+    border-radius: 10px;
+  }
+  &amp;::-webkit-scrollbar-track {
+    background: transparent;
+    border-radius: 10px;
+  }
+  &amp;::-webkit-scrollbar-corner {
+    background:transparent;
+  }
+`;
 &nbsp;
-SlideshowModal.propTypes = {
-  name: PropTypes.string,
-  images: PropTypes.arrayOf(PropTypes.string),
-  handleExit: PropTypes.bool,
-  currSlide: PropTypes.number,
-  closeModal: PropTypes.func.isRequired,
-  changeView: PropTypes.func.isRequired,
-  nextSlide: PropTypes.func.isRequired,
-  prevSlide: PropTypes.func.isRequired,
-};
+export const GridModalPhoto = styled.div`
+  height: 31vw;
+  width: 31vw;
+  position: relative;
+  overflow: hidden;
+  margin: 2px;
 &nbsp;
-SlideshowModal.defaultProps = {
-  name: 'restaurant name',
-  images: [],
-  handleExit: false,
-  currSlide: 0,
-};
+  &gt; img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  ::before {
+    content: '';
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    opacity: 0;
+    background-color: rgba(0, 0, 0, 0.15);
+    transition: all 0.4s;
+  }
+&nbsp;
+  :hover {
+    ::before {
+      opacity: 1;
+      z-index: 1;
+      cursor: pointer;
+    }
+    &gt; img {
+      transform: scale(1.015);
+      transition: all 0.4s;
+    }
+  }
+&nbsp;
+`;
 &nbsp;</pre></td></tr>
 </table></pre>
 <div class='push'></div><!-- for sticky footer -->

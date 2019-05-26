@@ -15,7 +15,7 @@ export const SlideshowViewer = styled.div`
   flex-wrap: wrap;
   justify-content: center;
   align-content: center;
-  animation-name: ${props => (props.onExit ? zoomOut : 'none')};
+  animation-name: ${props => (props.handleExit ? zoomOut : 'none')};
   animation-duration: 0.3s;
 
   > img {

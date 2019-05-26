@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <title>Code coverage report for client/components/ShowGridModalBox.jsx</title>
+    <title>Code coverage report for client/styled/Modal.jsx</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../prettify.css" />
     <link rel="stylesheet" href="../../base.css" />
@@ -16,28 +16,28 @@
 <div class='wrapper'>
   <div class='pad1'>
     <h1>
-      <a href="../../index.html">All files</a> / <a href="index.html">client/components</a> ShowGridModalBox.jsx
+      <a href="../../index.html">All files</a> / <a href="index.html">client/styled</a> Modal.jsx
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>4/4</span>
+        <span class='fraction'>3/3</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
         <span class="quiet">Branches</span>
-        <span class='fraction'>0/0</span>
-      </div>
-      <div class='fl pad1y space-right2'>
-        <span class="strong">100% </span>
-        <span class="quiet">Functions</span>
         <span class='fraction'>2/2</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>1/1</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">100% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>4/4</span>
+        <span class='fraction'>3/3</span>
       </div>
     </div>
     <p class="quiet">
@@ -74,17 +74,17 @@
 <a name='L26'></a><a href='#L26'>26</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">93x</span>
-<span class="cline-any cline-yes">8x</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">47x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -93,34 +93,34 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React from 'react';
-import PropTypes from 'prop-types';
-import { PlusIcon } from '../styled/Icons';
-import OpenGridBox from '../styled/ShowGridModalBox';
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import styled from 'styled-components';
+import { zoomIn } from './Keyframes';
 &nbsp;
-export default function ShowGridModalBox({ images, openModal }) {
-  return (
-    &lt;OpenGridBox onClick={() =&gt; openModal('grid')} role="presentation"&gt;
-      {`${images.length} photos`}
-      &lt;PlusIcon xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"&gt;
-        &lt;path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" /&gt;
-        &lt;path d="M0 0h24v24H0z" fill="none" /&gt;
-      &lt;/PlusIcon&gt;
-    &lt;/OpenGridBox&gt;
-  );
-}
+export const ModalContainer = styled.div`
+  display: block;
+  position: fixed;
+  z-index: 2;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(16,24,32,.95); 
+  animation-name: ${props =&gt; (props.handleEnter ? zoomIn : 'none')};
+  animation-duration: 0.3s;
+`;
 &nbsp;
-ShowGridModalBox.propTypes = {
-  images: PropTypes.arrayOf(PropTypes.string),
-  openModal: PropTypes.func.isRequired,
-};
-&nbsp;
-ShowGridModalBox.defaultProps = {
-  images: [],
-};
+export const ModalTitle = styled.div`
+  margin: 28px 0;
+  text-align: center;
+  text-transform: uppercase;
+  color: white;
+  font-size: 17px;
+  letter-spacing: .086em;
+`;
 &nbsp;</pre></td></tr>
 </table></pre>
 <div class='push'></div><!-- for sticky footer -->
