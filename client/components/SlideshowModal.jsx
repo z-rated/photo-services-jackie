@@ -1,6 +1,21 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
+
+const zoomOut = keyframes`
+  from {
+    opacity: 1;
+    }
+
+    50% {
+    opacity: 0;
+    transform: scale3d(0.3, 0.3, 0.3);
+    }
+
+    to {
+    opacity: 0;
+    }
+`;
 
 const ModalTitle = styled.div`
   margin: 28px 0;
@@ -100,6 +115,8 @@ const SlideshowViewer = styled.div`
   flex-wrap: wrap;
   justify-content: center;
   align-content: center;
+  animation-name: ${props => (props.onExit ? zoomOut : 'none')};
+  animation-duration: 0.3s;
 
   > img {
     height: 100%;
@@ -167,7 +184,7 @@ export default function SlideshowModal(props) {
           </svg>
         </CloseModalIcon>
       </ButtonBar>
-      <SlideshowViewer className={onExit}><img src={images[currSlide]} alt="" /></SlideshowViewer>
+      <SlideshowViewer onExit={onExit}><img src={images[currSlide]} alt="" /></SlideshowViewer>
       <PrevSlideBtn onClick={prevSlide}>
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
           <path d="M15.41 16.59L10.83 12l4.58-4.59L14 6l-6 6 6 6 1.41-1.41z" />
@@ -192,7 +209,7 @@ export default function SlideshowModal(props) {
 SlideshowModal.propTypes = {
   name: PropTypes.string,
   images: PropTypes.arrayOf(PropTypes.string),
-  onExit: PropTypes.string,
+  onExit: PropTypes.bool,
   currSlide: PropTypes.number,
   closeModal: PropTypes.func.isRequired,
   changeView: PropTypes.func.isRequired,
@@ -203,6 +220,6 @@ SlideshowModal.propTypes = {
 SlideshowModal.defaultProps = {
   name: 'restaurant name',
   images: [],
-  onExit: '',
+  onExit: false,
   currSlide: 0,
 };

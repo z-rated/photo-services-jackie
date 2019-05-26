@@ -22,8 +22,8 @@ class Gallery extends React.Component {
       imageUrls: [],
       showModal: false,
       modalView: 'slideshow',
-      onEnter: '',
-      onExit: '',
+      onEnter: false,
+      onExit: false,
       currSlide: 0,
     };
 
@@ -62,24 +62,24 @@ class Gallery extends React.Component {
       this.setState({
         showModal: true,
         modalView: style,
-        onEnter: 'zoomIn',
-        onExit: '',
+        onEnter: true,
+        onExit: false,
         currSlide: index,
       });
     } else {
       this.setState({
         showModal: true,
         modalView: style,
-        onEnter: 'zoomIn',
-        onExit: '',
+        onEnter: true,
+        onExit: false,
       });
     }
   }
 
   closeModal() {
     this.setState({
-      onEnter: '',
-      onExit: 'zoomOut',
+      onEnter: false,
+      onExit: true,
     }, () => setTimeout(() => {
       this.setState({
         showModal: false,

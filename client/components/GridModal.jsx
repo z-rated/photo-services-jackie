@@ -1,7 +1,21 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 
+const zoomOut = keyframes`
+  from {
+    opacity: 1;
+    }
+
+    50% {
+    opacity: 0;
+    transform: scale3d(0.3, 0.3, 0.3);
+    }
+
+    to {
+    opacity: 0;
+    }
+`;
 
 const ModalTitle = styled.div`
   margin: 28px 0;
@@ -44,6 +58,71 @@ const CloseModalIcon = styled.span`
   }
 `;
 
+const GridViewer = styled.div`
+  height: calc(100vh - 76px - 20px);
+  width: 96%;
+  margin: 1% 2%;
+  overflow: scroll;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 2px;
+  animation-name: ${props => (props.onExit ? zoomOut : 'none')};
+  animation-duration: 0.3s;
+
+  &::-webkit-scrollbar {
+    width: 10px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: #e1e1e1;
+    border-radius: 10px;
+  }
+  &::-webkit-scrollbar-track {
+    background: transparent;
+    border-radius: 10px;
+  }
+  &::-webkit-scrollbar-corner {
+    background:transparent;
+  }
+`;
+
+const GridModalPhoto = styled.div`
+  height: 31vw;
+  width: 31vw;
+  position: relative;
+  overflow: hidden;
+  margin: 2px;
+
+  > img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  ::before {
+    content: '';
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    opacity: 0;
+    background-color: rgba(0, 0, 0, 0.15);
+    transition: all 0.4s;
+  }
+
+  :hover {
+    ::before {
+      opacity: 1;
+      z-index: 1;
+      cursor: pointer;
+    }
+    > img {
+      transform: scale(1.015);
+      transition: all 0.4s;
+    }
+  }
+
+`;
+
 export default function GridModal(props) {
   const {
     name, images, onExit, closeModal, changeView,
@@ -60,15 +139,13 @@ export default function GridModal(props) {
           </svg>
         </CloseModalIcon>
       </ButtonBar>
-      <div className={`grid-photo-view ${onExit}`}>
-        <div className="grid-container">
-          {images.map((image, index) => (
-            <div className="modal-img" onClick={() => changeView('slideshow', index)} role="presentation" key={index}>
-              <img src={image} alt="" />
-            </div>
-          ))}
-        </div>
-      </div>
+      <GridViewer onExit={onExit}>
+        {images.map((image, index) => (
+          <GridModalPhoto onClick={() => changeView('slideshow', index)} role="presentation" key={index}>
+            <img src={image} alt="" />
+          </GridModalPhoto>
+        ))}
+      </GridViewer>
     </div>
   );
 }
@@ -76,7 +153,7 @@ export default function GridModal(props) {
 GridModal.propTypes = {
   name: PropTypes.string,
   images: PropTypes.arrayOf(PropTypes.string),
-  onExit: PropTypes.string,
+  onExit: PropTypes.bool,
   closeModal: PropTypes.func.isRequired,
   changeView: PropTypes.func.isRequired,
 };
@@ -84,5 +161,5 @@ GridModal.propTypes = {
 GridModal.defaultProps = {
   name: 'restuarant name',
   images: [],
-  onExit: '',
+  onExit: false,
 };
