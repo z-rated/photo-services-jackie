@@ -1,16 +1,8 @@
 import React from 'react';
-import styled from 'styled-components';
 import Modal from './Modal';
 import Photos from './Photos';
 import ShowGridModalBox from './ShowGridModalBox';
-
-const GalleryContainer = styled.div`
-  position: relative;
-  margin-top: 80px;
-  height: 400px;
-  width: 100%;
-  overflow: hidden;
-`;
+import GalleryContainer from '../styled/Gallery';
 
 class Gallery extends React.Component {
   constructor(props) {
