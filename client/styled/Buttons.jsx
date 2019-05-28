@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const ButtonBar = styled.div`
   position: absolute;
-  right: -20px;
+  right: 0px;
   top: 20px;
   z-index: 10;
 `;

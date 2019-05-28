@@ -18,7 +18,7 @@ export const GridIcon = styled.span`
 export const CloseModalIcon = styled.div`
   display: inline-block;
   vertical-align: middle;
-  margin-right: 30px;
+  margin-right: 10px;
   height: 40px;
   width: 40px;
   border-radius: 50%;
