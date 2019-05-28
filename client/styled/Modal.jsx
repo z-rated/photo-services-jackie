@@ -20,6 +20,6 @@ export const ModalTitle = styled.div`
   text-align: center;
   text-transform: uppercase;
   color: white;
-  font: 19px/20px 'Calibre-Medium', sans-serif;
+  font: 18px/20px 'Calibre-Medium', sans-serif;
   letter-spacing: .086em;
 `;

@@ -9,7 +9,7 @@ const OpenGridBox = styled.div`
     right: 40px;
     top: calc(50% - 15px);
     color: white;
-    font: 13px/40px 'Calibre-Medium', sans-serif;
+    font: 12px/40px 'Calibre-Medium', sans-serif;
     letter-spacing: 0.125em;
     text-transform: uppercase;
     z-index: 1;
