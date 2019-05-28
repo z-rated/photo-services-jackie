@@ -28,12 +28,15 @@ class Gallery extends React.Component {
   }
 
   componentDidMount() {
-    this.getPhotos();
+    const id = window.location.pathname.substring(13);
+    this.setState({
+      id,
+    }, this.getPhotos);
   }
 
   getPhotos() {
     const { id } = this.state;
-    fetch(`/api/restaurants/${id}/photos`, {
+    fetch(`/restaurants/${id}/photos`, {
       method: 'GET',
       mode: 'cors',
       headers: {

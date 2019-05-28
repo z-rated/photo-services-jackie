@@ -9,12 +9,12 @@ const GalleryContainer = styled.div`
 
   @font-face {
     font-family: 'Calibre-Medium';
-    src: url('./media/fonts/CalibreWeb-Medium.woff2') format('woff2');
+    src: url("http://localhost:3000/media/fonts/CalibreWeb-Medium.woff2") format('woff2');
   }
 
   @font-face {
     font-family: 'Calibre-Regular';
-    src: url('./media/fonts/CalibreWeb-Regular.woff2') format('woff2');
+    src: url("http://localhost:3000/media/fonts/CalibreWeb-Regular.woff2") format('woff2');
   }
 
 `;
