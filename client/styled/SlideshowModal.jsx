@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { zoomOut } from './Keyframes';
 
 export const SlideshowViewIndex = styled.span`
-  font-size: 14px;
+  font: 16px/20px 'Calibre-Regular', sans-serif;
   letter-spacing: .013em;
   color: white;
   margin-right: 20px;
@@ -52,10 +52,8 @@ export const SlideshowUserAvatar = styled.div`
 export const SlideshowUserName = styled.div`
   display: inline-block;
   color: white;
-  font-size: 13px;
-  font-weight: 300;
+  font: 16px/24px 'Calibre-Regular', sans-serif;
   letter-spacing: 0.013em ;
-  line-height: 24px;
   text-transform: uppercase;
   vertical-align: middle;
   text-align: left;
