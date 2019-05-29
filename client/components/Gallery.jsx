@@ -2,6 +2,7 @@ import React from 'react';
 import Modal from './Modal';
 import Photos from './Photos';
 import ShowGridModalBox from './ShowGridModalBox';
+import SocialMediaBox from './SocialMediaBox';
 import GalleryContainer from '../styled/Gallery';
 
 const disableScroll = () => {
@@ -151,6 +152,7 @@ class Gallery extends React.Component {
           />
         )}
         <ShowGridModalBox images={imageUrls} openModal={this.openModal} />
+        <SocialMediaBox />
       </GalleryContainer>
     );
   }

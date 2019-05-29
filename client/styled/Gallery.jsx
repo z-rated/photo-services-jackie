@@ -5,7 +5,7 @@ const GalleryContainer = styled.div`
   margin-top: 80px;
   height: 400px;
   width: 100%;
-  overflow: hidden;
+  overflow: visible;
 
   @font-face {
     font-family: 'Calibre-Medium';

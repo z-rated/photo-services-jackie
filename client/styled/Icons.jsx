@@ -46,3 +46,55 @@ export const PlusIcon = styled.svg`
     margin-left: 3px;
     margin-bottom: 3px;
 `;
+
+export const MailIcon = styled.div`
+  :hover {
+    cursor: pointer;
+
+    > svg {
+      fill: #b70038;
+    }
+  }
+`;
+
+export const FacebookIcon = styled.div`
+  :hover {
+    cursor: pointer;
+
+    > svg {
+      fill: #3b5998;
+    }
+
+    ellipse {
+      stroke: #3b5998;
+    }
+  }
+`;
+
+export const TwitterIcon = styled.div`
+  :hover {
+    cursor: pointer;
+
+    > svg {
+      fill: #1da1f2;
+    }
+    
+    ellipse {
+      stroke: #1da1f2;
+    }
+  }
+`;
+
+export const ShowMoreIcon = styled.div`
+  :hover {
+    cursor: pointer;
+
+    > svg {
+      fill: white;
+    }
+    
+    text {
+      color: #101820;
+    }
+}
+`;
