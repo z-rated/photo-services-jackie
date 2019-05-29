@@ -4,7 +4,7 @@ import { zoomIn } from './Keyframes';
 export const ModalContainer = styled.div`
   display: block;
   position: fixed;
-  z-index: 2;
+  z-index: 9999;
   left: 0;
   top: 0;
   width: 100%;
