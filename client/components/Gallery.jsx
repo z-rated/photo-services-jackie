@@ -4,6 +4,14 @@ import Photos from './Photos';
 import ShowGridModalBox from './ShowGridModalBox';
 import GalleryContainer from '../styled/Gallery';
 
+const disableScroll = () => {
+  document.body.style['overflow-y'] = 'hidden';
+};
+
+const enableScroll = () => {
+  document.body.style['overflow-y'] = 'auto';
+};
+
 class Gallery extends React.Component {
   constructor(props) {
     super(props);
@@ -69,6 +77,7 @@ class Gallery extends React.Component {
         handleExit: false,
       });
     }
+    disableScroll();
   }
 
   closeModal() {
@@ -80,6 +89,7 @@ class Gallery extends React.Component {
         showModal: false,
       });
     }, 300));
+    enableScroll();
   }
 
   changeView(style, index) {
