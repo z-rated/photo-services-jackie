@@ -58,6 +58,7 @@ export const MailIcon = styled.div`
 `;
 
 export const FacebookIcon = styled.div`
+  margin: 0px 8px;
   :hover {
     cursor: pointer;
 
@@ -72,6 +73,7 @@ export const FacebookIcon = styled.div`
 `;
 
 export const TwitterIcon = styled.div`
+  margin: 0px 8px;
   :hover {
     cursor: pointer;
 
@@ -86,6 +88,7 @@ export const TwitterIcon = styled.div`
 `;
 
 export const ShowMoreIcon = styled.div`
+  margin: 0px 8px; 
   :hover {
     cursor: pointer;
 
