@@ -1,6 +1,6 @@
-import { keyframes } from 'styled-components';
+import { css } from 'styled-components';
 
-export const zoomIn = keyframes`
+const zoomIn = css`
   from {
     opacity: 0;
     transform: scale3d(0.3, 0.3, 0.3);
@@ -11,7 +11,7 @@ export const zoomIn = keyframes`
   }
 `;
 
-export const zoomOut = keyframes`
+export const zoomOut = css`
   from {
     opacity: 1;
     }

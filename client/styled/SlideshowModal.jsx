@@ -1,5 +1,6 @@
-import styled from 'styled-components';
-import { zoomOut } from './Keyframes';
+/* eslint-disable no-undef */
+// import styled from 'styled-components';
+// import { zoomOut } from './Keyframes';
 
 export const SlideshowViewIndex = styled.span`
   font: 15px/24px 'Calibre-Regular', sans-serif;
@@ -9,13 +10,28 @@ export const SlideshowViewIndex = styled.span`
 `;
 
 export const SlideshowViewer = styled.div`
+  @keyframes zoomOut {
+    from {
+      opacity: 1;
+      }
+  
+      50% {
+      opacity: 0;
+      transform: scale3d(0.3, 0.3, 0.3);
+      }
+  
+      to {
+      opacity: 0;
+      }
+  }
+
   height: calc(100vh - 76px - 92px - 20px);
   padding: 10px 40px;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   align-content: center;
-  animation-name: ${props => (props.handleExit ? zoomOut : 'none')};
+  animation-name: ${props => (props.handleExit ? 'zoomOut' : 'none')};
   animation-duration: 0.3s;
 
   > img {

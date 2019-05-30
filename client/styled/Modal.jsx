@@ -1,7 +1,18 @@
-import styled from 'styled-components';
-import { zoomIn } from './Keyframes';
+/* eslint-disable no-undef */
+// import styled from 'styled-components';
 
 export const ModalContainer = styled.div`
+  @keyframes zoomIn {
+    from {
+      opacity: 0;
+      transform: scale3d(0.3, 0.3, 0.3);
+    }
+  
+    50% {
+      opacity: 1;
+    }
+  }
+
   display: block;
   position: fixed;
   z-index: 9999;
@@ -11,7 +22,7 @@ export const ModalContainer = styled.div`
   height: 100%;
   overflow: auto;
   background-color: rgba(16,24,32,.95); 
-  animation-name: ${props => (props.handleEnter ? zoomIn : 'none')};
+  animation-name: ${props => (props.handleEnter ? 'zoomIn' : 'none')};
   animation-duration: 0.3s;
 `;
 

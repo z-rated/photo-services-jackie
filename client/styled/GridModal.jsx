@@ -1,7 +1,23 @@
-import styled from 'styled-components';
-import { zoomOut } from './Keyframes';
+/* eslint-disable no-undef */
+// import styled from 'styled-components';
+// import { zoomOut } from './Keyframes';
 
 export const GridViewer = styled.div`
+  @keyframes zoomOut {
+    from {
+      opacity: 1;
+      }
+
+      50% {
+      opacity: 0;
+      transform: scale3d(0.3, 0.3, 0.3);
+      }
+
+      to {
+      opacity: 0;
+      }
+  }
+
   height: calc(100vh - 76px - 20px);
   width: 96%;
   margin: 1% 2%;
@@ -10,7 +26,7 @@ export const GridViewer = styled.div`
   flex-wrap: wrap;
   justify-content: center;
   padding: 2px;
-  animation-name: ${props => (props.handleExit ? zoomOut : 'none')};
+  animation-name: ${props => (props.handleExit ? 'zoomOut' : 'none')};
   animation-duration: 0.3s;
 
   &::-webkit-scrollbar {
