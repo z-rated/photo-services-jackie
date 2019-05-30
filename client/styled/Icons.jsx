@@ -63,7 +63,7 @@ export const FacebookIcon = styled.div`
   :hover {
     cursor: pointer;
 
-    > svg {
+    > a > svg {
       fill: #3b5998;
     }
 
@@ -78,7 +78,7 @@ export const TwitterIcon = styled.div`
   :hover {
     cursor: pointer;
 
-    > svg {
+    > a > svg {
       fill: #1da1f2;
     }
     
