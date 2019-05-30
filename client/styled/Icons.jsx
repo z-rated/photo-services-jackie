@@ -52,7 +52,7 @@ export const MailIcon = styled.div`
   :hover {
     cursor: pointer;
 
-    > svg {
+    > a > svg {
       fill: #b70038;
     }
   }

@@ -152,7 +152,7 @@ class Gallery extends React.Component {
           />
         )}
         <ShowGridModalBox images={imageUrls} openModal={this.openModal} />
-        <SocialMediaBox />
+        <SocialMediaBox name={restaurantName} />
       </GalleryContainer>
     );
   }

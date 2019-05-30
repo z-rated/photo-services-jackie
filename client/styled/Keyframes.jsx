@@ -1,6 +1,6 @@
 import { css } from 'styled-components';
 
-const zoomIn = css`
+export const zoomIn = css`
   from {
     opacity: 0;
     transform: scale3d(0.3, 0.3, 0.3);
