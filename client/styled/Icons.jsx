@@ -98,7 +98,7 @@ export const ShowMoreIcon = styled.div`
     }
     
     text {
-      color: #101820;
+      fill: #101820;
     }
 }
 `;

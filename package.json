@@ -8,7 +8,7 @@
     "test:coverage": "jest --verbose --coverage",
     "build": "webpack",
     "seed": "node db/generateData.js",
-    "server": "node server/server.js"
+    "start": "node server/server.js"
   },
   "lint-staged": {
     "*.js": "eslint",
