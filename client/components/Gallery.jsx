@@ -45,7 +45,7 @@ class Gallery extends React.Component {
 
   getPhotos() {
     const { id } = this.state;
-    fetch(`/restaurants/${id}/photos`, {
+    fetch(`/api/restaurants/${id}/photos`, {
       method: 'GET',
       mode: 'cors',
       headers: {
