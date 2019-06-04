@@ -18,7 +18,7 @@
 
 > npm run seed to seed database (initial)
 > npm run build to compile jsx files to one bundle
-> npm run server 
+> npm run start 
 
 ## Requirements
 
