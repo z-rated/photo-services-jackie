@@ -4,8 +4,8 @@
   "description": "photos module for zagat",
   "main": "index.js",
   "scripts": {
-    "test": "jest --verbose --watchAll",
-    "test:coverage": "jest --verbose --coverage",
+    "test": "jest --verbose",
+    "test:coverage": "jest --verbose",
     "build": "webpack",
     "seed": "node db/generateData.js",
     "start": "node server/server.js"
