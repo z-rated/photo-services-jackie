@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 const faker = require('faker');
 const db = require('./schema.js');
 const { imageUrls, restaurantNames } = require('./data.js');
@@ -24,7 +25,6 @@ const generate100Records = () => {
       photos: arr,
     });
   }
-
   return records;
 };
 
