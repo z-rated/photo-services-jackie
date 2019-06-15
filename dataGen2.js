@@ -1,7 +1,9 @@
+/* eslint-disable prefer-template */
+/* eslint-disable no-useless-concat */
 const fs = require('fs');
 const faker = require('faker');
 
-const filePath = '/Users/jackieye/csv-file/csv-2.txt';
+const filePath = '/Users/jackieye/csv-file/csv-2.csv';
 
 const writeStream = fs.createWriteStream(filePath);
 
@@ -15,8 +17,8 @@ function writeRestaurantTable(writer, encoding, callback) {
     do {
       i -= 1;
       restaurantId += 1;
-      const restaurantName = faker.company.companyName();
-      const data = `${restaurantId},${restaurantName},\n`;
+      const restaurantName = faker.name.findName() + "'s";
+      const data = `${restaurantId},${restaurantName}\n`;
       if (i === 0) {
         writeStream.write(data, encoding, callback);
       } else {

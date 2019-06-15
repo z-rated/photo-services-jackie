@@ -1,0 +1,31 @@
+config:
+  target: "http://localhost:3001"
+  processor: "./my-functions.js"
+  phases:
+    - duration: 30
+      arrivalRate: 100
+scenarios:
+  - name: "Get photos from restaurant"
+    flow:
+    - log: "New virtual user running"
+    - loop:
+      - get:
+          url: "/restaurant/photo/{{$randomNumber(1, 10000000)}}"
+      count: 10
+  # - name: "Get photos"
+  #   flow:
+  #     - loop:
+  #       - get:
+  #           url: "/photo/{{$randomNumber(1,50000000)}}"
+  #       count: 8
+  # - name: "Post photo"
+  #   flow:
+  #     - function: generateRandomData
+  #     - loop:
+  #       - post:
+  #           url: "/photo"
+  #           json:
+  #             date: "{{ date }}"
+  #             photourl: "{{ photourl }}"
+  #             restaurantid: "{{ restaurantid }}"
+  #       count: 1

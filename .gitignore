@@ -13,3 +13,12 @@ logs
 
 # Compiled Dirs (http://nodejs.org/api/addons.html)
 public/bundle.js
+
+# Ignore CSV files
+csv-file/cassandra-csv
+csv-file/csv-2.csv
+csv-file/csv.csv
+
+# Secret Stuff
+newrelic.js
+newrelic_agent.log

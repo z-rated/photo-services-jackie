@@ -8,7 +8,7 @@
     "test:coverage": "jest --verbose",
     "build": "webpack",
     "seed": "node db/generateData.js",
-    "start": "node server/server.js"
+    "start": "node server/pgApp.js"
   },
   "lint-staged": {
     "*.js": "eslint",
@@ -56,6 +56,8 @@
     "express": "^4.16.4",
     "faker": "^4.1.0",
     "mongoose": "^5.5.8",
+    "newrelic": "^5.10.0",
+    "pg": "^7.11.0",
     "prop-types": "^15.7.2",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",

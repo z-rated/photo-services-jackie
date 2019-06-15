@@ -37,15 +37,16 @@ class Gallery extends React.Component {
   }
 
   componentDidMount() {
-    const id = window.location.pathname.substring(13);
+    const id = new URLSearchParams(window.location.search).get('id');
     this.setState({
       id,
     }, this.getPhotos);
   }
 
+  // Minor edit to not show json data back but end up with just server
   getPhotos() {
     const { id } = this.state;
-    fetch(`/api/restaurants/${id}/photos`, {
+    fetch(`/restaurant/photo/${id}`, {
       method: 'GET',
       mode: 'cors',
       headers: {
@@ -56,7 +57,7 @@ class Gallery extends React.Component {
       .then((data) => {
         this.setState({
           restaurantName: data.name,
-          imageUrls: data.photos,
+          imageUrls: data.photo,
         });
       });
   }
