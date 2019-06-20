@@ -5,19 +5,19 @@ config:
     - duration: 30
       arrivalRate: 100
 scenarios:
-  - name: "Get photos from restaurant"
+  - name: "Get photos from restaurant 1 - 2mil"
     flow:
-    - log: "New virtual user running"
+    - weight: 8
     - loop:
       - get:
-          url: "/restaurant/photo/{{$randomNumber(1, 10000000)}}"
-      count: 10
-  # - name: "Get photos"
-  #   flow:
-  #     - loop:
-  #       - get:
-  #           url: "/photo/{{$randomNumber(1,50000000)}}"
-  #       count: 8
+          url: "/restaurant/photo/{{$randomNumber(1, 2000000)}}"
+      count: 8
+  - name: "Get photos from restaurant 2mil - 10mil"
+    flow:
+      - loop:
+        - get:
+            url: "/restaurant/photo/{{$randomNumber(2000001, 10000000)}}"
+        count: 1
   # - name: "Post photo"
   #   flow:
   #     - function: generateRandomData

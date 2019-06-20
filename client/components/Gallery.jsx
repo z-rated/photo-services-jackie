@@ -43,7 +43,6 @@ class Gallery extends React.Component {
     }, this.getPhotos);
   }
 
-  // Minor edit to not show json data back but end up with just server
   getPhotos() {
     const { id } = this.state;
     fetch(`/restaurant/photo/${id}`, {

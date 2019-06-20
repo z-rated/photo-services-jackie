@@ -3,6 +3,9 @@
 /* eslint-disable radix */
 // eslint-disable-next-line prefer-destructuring
 const Pool = require('pg').Pool;
+const redis = require('redis');
+
+const client = redis.createClient();
 
 const pool = new Pool({
   user: 'postgres',
@@ -14,18 +17,31 @@ const pool = new Pool({
 
 const getPhotosByRestaurantId = (request, response) => {
   const restaurantid = request.params.id;
-  console.log('Got restaurant id', restaurantid);
+  // console.log('Got restaurant id', restaurantid);
   pool.query(`SELECT * FROM photo_table, rest_table where photo_table.restaurantid = ${restaurantid} AND rest_table.restaurantid = ${restaurantid}`, (error, results) => {
     if (error) {
       throw error;
     }
+    client.setex(restaurantid, 300, JSON.stringify(results.rows));
     response.status(200).json(results.rows);
   });
 };
 
+const redisGetPhotosByRestId = (req, res) => {
+  const restaurantid = req.params.id;
+  client.get(restaurantid, (err, result) => {
+    if (result) { 
+      res.send(result);
+    } else {
+      getPhotosByRestaurantId(req, res);
+    }
+  });
+};
+
+
 const getSinglePhoto = (request, response) => {
   const photoid = request.params.id;
-  console.log('Got photo id', photoid);
+  // console.log('Got photo id', photoid);
   pool.query(`SELECT * FROM photo_table where photoid = ${photoid}`, (error, results) => {
     if (error) {
       throw error;
@@ -80,4 +96,5 @@ module.exports = {
   createPhoto,
   updatePhoto,
   deletePhoto,
+  redisGetPhotosByRestId,
 };
