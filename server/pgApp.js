@@ -14,7 +14,7 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, '../public')));
 
-app.get('/restaurant/photo/:id', db.getPhotosByRestaurantId);
+app.get('/restaurant/photo/:id', db.redisGetPhotosByRestId);
 app.get('/photo/:id', db.getSinglePhoto);
 app.post('/photo', db.createPhoto);
 app.put('/photo/:id', db.updatePhoto);
